@@ -6,18 +6,20 @@ export function usePdfDownload() {
     if (isGenerating.value) return
 
     isGenerating.value = true
-    const originalTitle = document.title
-    document.title = 'Ramekhchhoeng_Final'
 
-    // Small delay so button state updates before dialog opens
-    await new Promise(resolve => setTimeout(resolve, 80))
-
-    window.print()
-
-    document.title = originalTitle
-    isGenerating.value = false
+    try {
+      const link = document.createElement('a')
+      link.href = '/Ramekhchhoeng_Final.pdf'
+      link.download = 'Ramekhchhoeng_Final.pdf'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } finally {
+      isGenerating.value = false
+    }
   }
 
   return { downloadPDF, isGenerating }
 }
+
 
