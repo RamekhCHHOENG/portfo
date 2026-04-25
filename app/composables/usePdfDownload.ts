@@ -19,7 +19,7 @@ export function usePdfDownload() {
           <!-- Name + title -->
           <div>
             <div style="width:62px;height:62px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#4f46e5);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;margin-bottom:14px;letter-spacing:-0.5px;">RC</div>
-            <h1 style="margin:0 0 4px;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2;">Ramekhchhoeng</h1>
+            <h1 style="margin:0 0 2px;font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2;">Ramekh Chhoeng</h1>
             <p style="margin:0;font-size:11px;color:#a78bfa;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Full-Stack Developer</p>
           </div>
 
@@ -30,6 +30,10 @@ export function usePdfDownload() {
               <div style="display:flex;align-items:flex-start;gap:8px;">
                 <span style="color:#a78bfa;font-size:11px;flex-shrink:0;margin-top:0px;">✉</span>
                 <span style="font-size:10.5px;color:rgba(255,255,255,0.7);word-break:break-all;line-height:1.4;">ramekhchhoeng@icloud.com</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="color:#a78bfa;font-size:11px;flex-shrink:0;">☎</span>
+                <span style="font-size:10.5px;color:rgba(255,255,255,0.7);">+855 97 818 818 3</span>
               </div>
               <div style="display:flex;align-items:center;gap:8px;">
                 <span style="color:#a78bfa;font-size:11px;flex-shrink:0;">⌂</span>
@@ -54,12 +58,13 @@ export function usePdfDownload() {
           <div>
             <p style="margin:0 0 10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.3);">Skills</p>
             ${[
-              { label: 'Languages', items: 'TypeScript · JavaScript · Python · Java · SQL · Rust' },
-              { label: 'Backend', items: 'NestJS · Hono · FastAPI · Express · Spring Boot · Prisma · Bun' },
-              { label: 'Frontend', items: 'Next.js · Nuxt · React · Vue · Tailwind CSS · shadcn/ui' },
-              { label: 'Mobile', items: 'React Native · Expo' },
-              { label: 'DevOps & Infra', items: 'Docker · PostgreSQL · Redis · RabbitMQ · MinIO · Coolify · GitHub Actions' },
-              { label: 'Tools', items: 'Figma · Postman · VS Code · Raycast' },
+              { label: 'Languages', items: 'TypeScript · JavaScript · Swift · Java · Python · SQL · Kotlin' },
+              { label: 'Frontend', items: 'Vue · Nuxt · React · Next.js · Vuetify · Tailwind CSS · Bootstrap · jQuery · GraphQL' },
+              { label: 'Backend', items: 'NestJS · Hono · Express · Spring Boot · Laravel · Prisma · Bun' },
+              { label: 'Mobile', items: 'React Native · Expo · Swift (iOS)' },
+              { label: 'Database', items: 'PostgreSQL · MySQL · Oracle · Redis' },
+              { label: 'DevOps & Infra', items: 'Docker · RabbitMQ · MinIO · Coolify · GitHub Actions' },
+              { label: 'Tools', items: 'Figma · Jira · Postman · VS Code · Raycast' },
             ].map(g => `
               <div style="margin-bottom:11px;">
                 <p style="margin:0 0 4px;font-size:9.5px;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:0.8px;">${g.label}</p>
@@ -94,10 +99,10 @@ export function usePdfDownload() {
           <!-- Summary -->
           <div style="margin-bottom:26px;padding:18px 20px;background:#f8f6ff;border-left:3px solid #7c3aed;border-radius:0 8px 8px 0;">
             <p style="margin:0;font-size:12px;color:#3b3057;line-height:1.7;">
-              Backend-focused full-stack engineer with <strong>4+ years</strong> shipping production REST &amp; GraphQL APIs, 
-              mobile apps, and self-hosted microservice infrastructure for clients across 
-              <strong>Southeast Asia and Europe</strong>. I care about clean architecture, typed contracts, 
-              and code that's genuinely maintainable.
+              Frontend-led full-stack engineer with <strong>4.5+ years</strong> of experience designing and building
+              production web and mobile applications. Started deep in UI/UX, grew into full-stack — shipping REST &amp; GraphQL APIs,
+              microservices, and cross-platform apps for clients across <strong>Southeast Asia and Europe</strong>.
+              I care about clean interfaces, typed contracts, and code that teams can actually maintain.
             </p>
           </div>
 
