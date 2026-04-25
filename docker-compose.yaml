@@ -8,6 +8,4 @@ services:
     restart: unless-stopped
     environment:
       - NUXT_APP_BASE_URL=/
-    ports:
-      - "80:80"
 
