@@ -1,0 +1,28 @@
+{
+  "name": "Ramekhchhoeng – Portfolio",
+  "short_name": "RC Portfolio",
+  "description": "Personal portfolio of Ramekhchhoeng, a Full-Stack Developer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f13",
+  "theme_color": "#6366f1",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "productivity"],
+  "screenshots": []
+}

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramekhchhoeng – Full-Stack Developer</title>
+  <meta name="description" content="Personal portfolio of Ramekhchhoeng, a Full-Stack Developer specializing in TypeScript, Python, and modern web technologies." />
+  <meta name="theme-color" content="#6366f1" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Ramekhchhoeng – Full-Stack Developer" />
+  <meta property="og:description" content="Personal portfolio showcasing projects in TypeScript, Python, React, and more." />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="navbar" class="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">RC.</a>
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="btn btn-primary btn-sm" id="download-pdf-nav" onclick="downloadPDF()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>
+            Export PDF
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO / ABOUT ========== -->
+  <section id="hero" class="section hero-section">
+    <div class="container hero-inner">
+      <div class="hero-text fade-in">
+        <p class="hero-greeting">👋 Hello, I'm</p>
+        <h1 class="hero-name">Ramekhchhoeng</h1>
+        <h2 class="hero-title">Full-Stack Developer</h2>
+        <p class="hero-bio">
+          I build robust, scalable applications — from RESTful APIs and microservices to responsive web
+          and mobile experiences. Passionate about clean architecture, developer tooling, and shipping
+          products that matter.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <button class="btn btn-outline" onclick="downloadPDF()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>
+            Download Resume
+          </button>
+        </div>
+      </div>
+      <div class="hero-avatar fade-in delay-1">
+        <div class="avatar-ring">
+          <div class="avatar-placeholder">RC</div>
+        </div>
+        <div class="availability-badge">
+          <span class="dot"></span> Open to opportunities
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <h2 class="section-title fade-in">About Me</h2>
+      <div class="about-grid fade-in">
+        <div class="about-card">
+          <div class="about-icon">🎓</div>
+          <h3>Education</h3>
+          <p>Computer Science graduate with a focus on software engineering, systems design, and distributed computing.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">💻</div>
+          <h3>Experience</h3>
+          <p>Built 25+ production applications spanning web, mobile, microservices, DevOps tooling, and AI agents.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🌏</div>
+          <h3>Location</h3>
+          <p>Based in Cambodia. Deployed services at <em>ramekhchhoeng.com</em> using Coolify on self-hosted infrastructure.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-icon">🚀</div>
+          <h3>Interests</h3>
+          <p>Clean architecture, developer experience, AI/ML applications, and contributing to open-source ecosystems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SKILLS ========== -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Technical Skills</h2>
+
+      <div class="skills-categories fade-in">
+
+        <div class="skill-group">
+          <h3 class="skill-group-title">Languages</h3>
+          <div class="skill-badges">
+            <span class="badge badge-blue">TypeScript</span>
+            <span class="badge badge-blue">JavaScript</span>
+            <span class="badge badge-yellow">Python</span>
+            <span class="badge badge-orange">Java</span>
+            <span class="badge badge-red">Rust</span>
+            <span class="badge badge-teal">SQL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group-title">Backend</h3>
+          <div class="skill-badges">
+            <span class="badge badge-green">Hono</span>
+            <span class="badge badge-red">NestJS</span>
+            <span class="badge badge-teal">FastAPI</span>
+            <span class="badge badge-green">Express</span>
+            <span class="badge badge-orange">Spring Boot</span>
+            <span class="badge badge-blue">Prisma ORM</span>
+            <span class="badge badge-teal">SQLAlchemy</span>
+            <span class="badge badge-orange">Bun</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group-title">Frontend & Mobile</h3>
+          <div class="skill-badges">
+            <span class="badge badge-blue">Next.js</span>
+            <span class="badge badge-blue">React</span>
+            <span class="badge badge-purple">React Native</span>
+            <span class="badge badge-purple">Expo</span>
+            <span class="badge badge-teal">Tailwind CSS</span>
+            <span class="badge badge-blue">shadcn/ui</span>
+            <span class="badge badge-orange">TanStack Query</span>
+            <span class="badge badge-green">Zustand</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3 class="skill-group-title">Infrastructure & DevOps</h3>
+          <div class="skill-badges">
+            <span class="badge badge-blue">Docker</span>
+            <span class="badge badge-teal">PostgreSQL</span>
+            <span class="badge badge-red">Redis</span>
+            <span class="badge badge-orange">RabbitMQ</span>
+            <span class="badge badge-green">MinIO (S3)</span>
+            <span class="badge badge-purple">Coolify</span>
+            <span class="badge badge-blue">GitHub Actions</span>
+            <span class="badge badge-orange">GitLab CI/CD</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Featured Projects</h2>
+      <div class="projects-grid">
+
+        <article class="project-card fade-in">
+          <div class="project-header">
+            <span class="project-emoji">🏠</span>
+            <div class="project-links">
+              <a href="https://github.com/open-source-v1/boilerplate" target="_blank" rel="noopener" aria-label="View source on GitHub" class="icon-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Rental Management System</h3>
+          <p class="project-desc">
+            Full-stack property management platform for managing rooms, tenants, payments, and invoices.
+            Features real-time dashboards, automated invoice generation, and tenant portals.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Hono</span>
+            <span class="tech-tag">Bun</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">React Native</span>
+            <span class="tech-tag">Prisma</span>
+            <span class="tech-tag">PostgreSQL</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in delay-1">
+          <div class="project-header">
+            <span class="project-emoji">🍜</span>
+            <div class="project-links">
+              <a href="https://github.com/open-source-v1/boilerplate" target="_blank" rel="noopener" aria-label="View source on GitHub" class="icon-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Foodie – Recipe & Meal Planner</h3>
+          <p class="project-desc">
+            World recipe collection and meal planning app. Browse dishes from global cuisines, plan weekly
+            meals, and generate shopping lists. Includes cross-platform mobile app.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">Express 5</span>
+            <span class="tech-tag">Next.js 16</span>
+            <span class="tech-tag">React 19</span>
+            <span class="tech-tag">React Native</span>
+            <span class="tech-tag">Expo 54</span>
+            <span class="tech-tag">Prisma 7</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in delay-2">
+          <div class="project-header">
+            <span class="project-emoji">⚡</span>
+            <div class="project-links">
+              <a href="https://github.com/open-source-v1/boilerplate" target="_blank" rel="noopener" aria-label="View source on GitHub" class="icon-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">EV Station KH</h3>
+          <p class="project-desc">
+            Cambodia EV charging station locator with interactive map, real-time availability,
+            and route planning. Uses PostGIS for geo-spatial queries and NestJS microservices architecture.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">NestJS</span>
+            <span class="tech-tag">Next.js 14</span>
+            <span class="tech-tag">Leaflet</span>
+            <span class="tech-tag">React Native</span>
+            <span class="tech-tag">Expo 54</span>
+            <span class="tech-tag">PostGIS</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in">
+          <div class="project-header">
+            <span class="project-emoji">💸</span>
+            <div class="project-links">
+              <a href="https://github.com/open-source-v1/boilerplate" target="_blank" rel="noopener" aria-label="View source on GitHub" class="icon-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Group Expense Splitter</h3>
+          <p class="project-desc">
+            Splitwise-inspired expense management app for groups. Tracks shared expenses, calculates
+            optimal debt settlements, and supports multi-currency. Full mobile + web experience.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">TypeScript</span>
+            <span class="tech-tag">NestJS 10</span>
+            <span class="tech-tag">Next.js 16</span>
+            <span class="tech-tag">React Native</span>
+            <span class="tech-tag">Expo 54</span>
+            <span class="tech-tag">Prisma 5</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in delay-1">
+          <div class="project-header">
+            <span class="project-emoji">📦</span>
+            <div class="project-links">
+              <a href="https://github.com/open-source-v1/boilerplate" target="_blank" rel="noopener" aria-label="View source on GitHub" class="icon-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">StockFlow – Asset Inventory</h3>
+          <p class="project-desc">
+            Asset and spare-part management system for enterprises. Features barcode scanning, stock
+            movement tracking, low-stock alerts, and exportable analytics dashboards.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">SQLAlchemy 2.0</span>
+            <span class="tech-tag">Next.js 14</span>
+            <span class="tech-tag">shadcn/ui</span>
+            <span class="tech-tag">Recharts</span>
+          </div>
+        </article>
+
+        <article class="project-card fade-in delay-2">
+          <div class="project-header">
+            <span class="project-emoji">🤖</span>
+            <div class="project-links">
+              <a href="https://github.com/open-source-v1/boilerplate" target="_blank" rel="noopener" aria-label="View source on GitHub" class="icon-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Motomoto – AI Agent Framework</h3>
+          <p class="project-desc">
+            Autonomous AI agent system with trading intelligence, situational awareness, and inner voice
+            modules. Runs local LLMs via Ollama with ElevenLabs TTS for voice interaction.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Ollama</span>
+            <span class="tech-tag">qwen2.5</span>
+            <span class="tech-tag">ElevenLabs</span>
+            <span class="tech-tag">asyncio</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Get In Touch</h2>
+      <p class="contact-subtitle fade-in">
+        I'm always open to new opportunities, collaborations, and interesting conversations.
+        Feel free to reach out through any of the channels below.
+      </p>
+      <div class="contact-links fade-in">
+
+        <a href="mailto:ramekhchhoeng@icloud.com" class="contact-card" aria-label="Send email">
+          <div class="contact-icon email-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">ramekhchhoeng@icloud.com</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/open-source-v1" target="_blank" rel="noopener" class="contact-card" aria-label="View GitHub profile">
+          <div class="contact-icon github-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value">open-source-v1</span>
+          </div>
+        </a>
+
+        <a href="https://linkedin.com/in/ramekhchhoeng" target="_blank" rel="noopener" class="contact-card" aria-label="View LinkedIn profile">
+          <div class="contact-icon linkedin-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value">ramekhchhoeng</span>
+          </div>
+        </a>
+
+        <div class="contact-card download-card" onclick="downloadPDF()" role="button" tabindex="0" aria-label="Download resume as PDF" onkeydown="if(event.key==='Enter')downloadPDF()">
+          <div class="contact-icon pdf-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+              <path d="M4.603 14.087a.81.81 0 0 1-.438-.42c-.195-.388-.13-.776.08-1.102.198-.307.526-.568.897-.787a7.68 7.68 0 0 1 1.482-.645 19.697 19.697 0 0 0 1.062-2.227 7.269 7.269 0 0 1-.43-1.295c-.086-.4-.119-.796-.046-1.136.075-.354.274-.672.65-.823.192-.077.4-.12.602-.077a.7.7 0 0 1 .477.365c.088.164.12.356.127.538.007.188-.012.396-.047.614-.084.51-.27 1.134-.52 1.794a10.954 10.954 0 0 0 .98 1.686 5.753 5.753 0 0 1 1.334.05c.364.066.734.195.96.465.12.144.193.32.2.518.007.192-.047.382-.138.563a1.04 1.04 0 0 1-.354.416.856.856 0 0 1-.51.138c-.331-.014-.654-.196-.933-.417a5.712 5.712 0 0 1-.911-.95 11.651 11.651 0 0 0-1.997.406 11.307 11.307 0 0 1-1.02 1.51c-.292.35-.609.656-.927.787a.793.793 0 0 1-.58.029zm1.379-1.901c-.166.076-.32.156-.459.238-.328.194-.541.383-.647.547-.094.145-.096.25-.04.361.01.022.02.036.026.044a.266.266 0 0 0 .035-.012c.137-.056.355-.235.635-.572a8.18 8.18 0 0 0 .45-.606zm1.64-1.33a12.71 12.71 0 0 1 1.01-.193 11.744 11.744 0 0 1-.51-.858 20.801 20.801 0 0 1-.5 1.05zm2.446.45c.15.163.296.3.435.41.24.19.407.253.498.256a.107.107 0 0 0 .07-.015.307.307 0 0 0 .094-.125.436.436 0 0 0 .059-.2.095.095 0 0 0-.026-.063c-.052-.062-.2-.152-.518-.209a3.876 3.876 0 0 0-.612-.053zM8.078 7.8a6.7 6.7 0 0 0 .2-.828c.031-.188.043-.343.038-.465a.613.613 0 0 0-.032-.198.517.517 0 0 0-.145.04c-.087.035-.158.106-.196.283-.04.192-.03.469.046.822.024.111.054.227.09.346z"/>
+            </svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Resume</span>
+            <span class="contact-value">Download PDF</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 Ramekhchhoeng. Built with HTML, CSS &amp; JavaScript.</p>
+      <p class="footer-sub">Deployed via GitHub Pages · PWA enabled</p>
+    </div>
+  </footer>
+
+  <!-- html2pdf.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+3To5oB/M3aujpABfD5LFz1z2LkFDgV2kFjuh6g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
