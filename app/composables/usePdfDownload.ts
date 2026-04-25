@@ -219,12 +219,15 @@ export function usePdfDownload() {
       const html2pdf = (await import('html2pdf.js')).default
 
       const resumeEl = buildResumeHTML()
-      // Mount off-screen so layout is computed
-      resumeEl.style.position = 'fixed'
-      resumeEl.style.top = '-9999px'
-      resumeEl.style.left = '-9999px'
-      resumeEl.style.zIndex = '-1'
-      document.body.appendChild(resumeEl)
+
+      // Wrap in a clipping container at top-left so html2canvas can render it
+      const wrapper = document.createElement('div')
+      wrapper.style.cssText = 'position:fixed;top:0;left:0;width:794px;height:0;overflow:hidden;z-index:-9999;pointer-events:none;'
+      wrapper.appendChild(resumeEl)
+      document.body.appendChild(wrapper)
+
+      // Allow one frame for layout to settle
+      await new Promise(resolve => requestAnimationFrame(resolve))
 
       const opt = {
         margin: 0,
@@ -236,12 +239,14 @@ export function usePdfDownload() {
           backgroundColor: '#ffffff',
           logging: false,
           width: 794,
+          height: resumeEl.scrollHeight,
+          windowWidth: 794,
         },
-        jsPDF: { unit: 'px', format: [794, 1123], orientation: 'portrait', hotfixes: ['px_scaling'] },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       }
 
       await html2pdf().set(opt).from(resumeEl).save()
-      document.body.removeChild(resumeEl)
+      document.body.removeChild(wrapper)
     } catch (err) {
       console.error('PDF generation failed:', err)
     } finally {
