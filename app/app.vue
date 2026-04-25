@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen text-zinc-50 antialiased relative">
     <!-- Fixed ambient gradient background (the "wallpaper" for liquid glass) -->
-    <div class="fixed inset-0 -z-10 overflow-hidden" style="background: linear-gradient(145deg, #07001a 0%, #04081c 45%, #010f0a 100%);">
+    <div class="orb-container fixed inset-0 -z-10 overflow-hidden" style="background: linear-gradient(145deg, #07001a 0%, #04081c 45%, #010f0a 100%)">
       <!-- Orb 1: Violet — top-left, primary glow -->
       <div
         class="absolute pointer-events-none"
