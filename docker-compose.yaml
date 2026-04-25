@@ -6,8 +6,6 @@ services:
       target: runner
     image: ramekhchhoeng-portfolio:latest
     container_name: portfolio
-    ports:
-      - "3000:80"
     restart: unless-stopped
     environment:
       - NUXT_APP_BASE_URL=/
