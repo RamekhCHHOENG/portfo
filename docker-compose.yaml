@@ -17,4 +17,15 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portfolio.rule=Host(`portfolio.ramekhchhoeng.com`)
+      - traefik.http.routers.portfolio.entrypoints=websecure
+      - traefik.http.routers.portfolio.tls=true
+      - traefik.http.services.portfolio.loadbalancer.server.port=80
+    networks:
+      - coolify
 
+networks:
+  coolify:
+    external: true
