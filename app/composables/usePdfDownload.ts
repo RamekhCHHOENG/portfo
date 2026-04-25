@@ -2,217 +2,214 @@ export function usePdfDownload() {
   const isGenerating = ref(false)
 
   function buildResumeHTML(): HTMLElement {
-    const el = document.createElement('div')
-    el.style.cssText = `
-      width: 794px;
-      min-height: 1123px;
-      background: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 13px;
-      color: #1a1a1a;
-      line-height: 1.5;
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    `
+    const root = document.createElement('div')
+    root.style.cssText = 'width:794px;background:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:13px;color:#1e1e2e;line-height:1.5;display:flex;flex-direction:column;'
 
-    el.innerHTML = `
-      <!-- Header bar -->
-      <div style="background:#0f0f18; padding:40px 52px 36px; color:#fff;">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:24px;">
+    const pill = (text: string) =>
+      `<span style="display:inline-block;background:#ede9fe;color:#5b21b6;font-size:9.5px;font-weight:700;padding:2px 9px;border-radius:99px;letter-spacing:0.3px;">${text}</span>`
+
+    const dot = `<span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#7c3aed;margin-right:7px;flex-shrink:0;margin-top:5px;"></span>`
+
+    root.innerHTML = `
+      <div style="display:flex;min-height:1123px;">
+
+        <!-- ── SIDEBAR ── -->
+        <div style="width:232px;flex-shrink:0;background:#0f0f1a;color:#fff;padding:40px 26px;display:flex;flex-direction:column;gap:28px;">
+
+          <!-- Name + title -->
           <div>
-            <h1 style="margin:0 0 4px; font-size:32px; font-weight:700; letter-spacing:-0.5px; color:#fff;">Ramekhchhoeng</h1>
-            <p style="margin:0 0 16px; font-size:15px; color:#a78bfa; font-weight:500; letter-spacing:0.3px;">Full-Stack Developer</p>
-            <p style="margin:0; font-size:12px; color:rgba(255,255,255,0.55); max-width:420px; line-height:1.6;">
-              Backend-focused engineer with 4+ years shipping production APIs, mobile apps, and self-hosted infrastructure for clients across Southeast Asia and Europe.
-            </p>
+            <div style="width:62px;height:62px;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#4f46e5);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;margin-bottom:14px;letter-spacing:-0.5px;">RC</div>
+            <h1 style="margin:0 0 4px;font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.2;">Ramekhchhoeng</h1>
+            <p style="margin:0;font-size:11px;color:#a78bfa;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Full-Stack Developer</p>
           </div>
-          <div style="text-align:right; flex-shrink:0; margin-top:4px;">
-            <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
-              <a href="mailto:ramekhchhoeng@icloud.com" style="color:rgba(255,255,255,0.65); font-size:11.5px; text-decoration:none;">ramekhchhoeng@icloud.com</a>
-              <a href="https://github.com/RamekhCHHOENG" style="color:rgba(255,255,255,0.65); font-size:11.5px; text-decoration:none;">github.com/RamekhCHHOENG</a>
-              <a href="https://linkedin.com/in/ramekhchhoeng" style="color:rgba(255,255,255,0.65); font-size:11.5px; text-decoration:none;">linkedin.com/in/ramekhchhoeng</a>
-              <span style="color:rgba(255,255,255,0.45); font-size:11.5px;">📍 Phnom Penh, Cambodia</span>
+
+          <!-- Contact -->
+          <div>
+            <p style="margin:0 0 10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.3);">Contact</p>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:flex-start;gap:8px;">
+                <span style="color:#a78bfa;font-size:11px;flex-shrink:0;margin-top:0px;">✉</span>
+                <span style="font-size:10.5px;color:rgba(255,255,255,0.7);word-break:break-all;line-height:1.4;">ramekhchhoeng@icloud.com</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="color:#a78bfa;font-size:11px;flex-shrink:0;">⌂</span>
+                <span style="font-size:10.5px;color:rgba(255,255,255,0.7);">Phnom Penh, Cambodia</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="color:#a78bfa;font-size:11px;flex-shrink:0;">◆</span>
+                <span style="font-size:10px;color:rgba(255,255,255,0.7);">github.com/RamekhCHHOENG</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="color:#a78bfa;font-size:11px;flex-shrink:0;">in</span>
+                <span style="font-size:10px;color:rgba(255,255,255,0.7);">linkedin.com/in/ramekhchhoeng</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <span style="color:#a78bfa;font-size:11px;flex-shrink:0;">↗</span>
+                <span style="font-size:10px;color:rgba(255,255,255,0.7);">ramekhchhoeng.github.io/portfo</span>
+              </div>
             </div>
           </div>
+
+          <!-- Skills -->
+          <div>
+            <p style="margin:0 0 10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.3);">Skills</p>
+            ${[
+              { label: 'Languages', items: 'TypeScript · JavaScript · Python · Java · SQL · Rust' },
+              { label: 'Backend', items: 'NestJS · Hono · FastAPI · Express · Spring Boot · Prisma · Bun' },
+              { label: 'Frontend', items: 'Next.js · Nuxt · React · Vue · Tailwind CSS · shadcn/ui' },
+              { label: 'Mobile', items: 'React Native · Expo' },
+              { label: 'DevOps & Infra', items: 'Docker · PostgreSQL · Redis · RabbitMQ · MinIO · Coolify · GitHub Actions' },
+              { label: 'Tools', items: 'Figma · Postman · VS Code · Raycast' },
+            ].map(g => `
+              <div style="margin-bottom:11px;">
+                <p style="margin:0 0 4px;font-size:9.5px;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:0.8px;">${g.label}</p>
+                <p style="margin:0;font-size:10.5px;color:rgba(255,255,255,0.6);line-height:1.55;">${g.items}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Languages spoken -->
+          <div>
+            <p style="margin:0 0 10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.3);">Languages</p>
+            ${[['Khmer','Native'],['English','Professional']].map(([lang, level]) => `
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+                <span style="font-size:11px;color:rgba(255,255,255,0.8);font-weight:500;">${lang}</span>
+                <span style="font-size:10px;color:#a78bfa;font-weight:600;">${level}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Education -->
+          <div>
+            <p style="margin:0 0 10px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.3);">Education</p>
+            <p style="margin:0 0 2px;font-size:11.5px;font-weight:700;color:#fff;">Computer Science</p>
+            <p style="margin:0 0 4px;font-size:10px;color:#a78bfa;">Self-directed · 2019 – Present</p>
+            <p style="margin:0;font-size:10px;color:rgba(255,255,255,0.5);line-height:1.5;">Real-world projects, open-source contributions, online courses.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- Body -->
-      <div style="padding:36px 52px; display:flex; gap:36px;">
+        <!-- ── MAIN BODY ── -->
+        <div style="flex:1;min-width:0;background:#fff;padding:40px 38px;">
 
-        <!-- Left column (wider) -->
-        <div style="flex:1; min-width:0;">
+          <!-- Summary -->
+          <div style="margin-bottom:26px;padding:18px 20px;background:#f8f6ff;border-left:3px solid #7c3aed;border-radius:0 8px 8px 0;">
+            <p style="margin:0;font-size:12px;color:#3b3057;line-height:1.7;">
+              Backend-focused full-stack engineer with <strong>4+ years</strong> shipping production REST &amp; GraphQL APIs, 
+              mobile apps, and self-hosted microservice infrastructure for clients across 
+              <strong>Southeast Asia and Europe</strong>. I care about clean architecture, typed contracts, 
+              and code that's genuinely maintainable.
+            </p>
+          </div>
 
           <!-- Experience -->
-          <div style="margin-bottom:28px;">
-            <h2 style="margin:0 0 14px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.8px; color:#a78bfa; padding-bottom:8px; border-bottom:1.5px solid #a78bfa;">
-              Experience
-            </h2>
+          <div style="margin-bottom:26px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+              <h2 style="margin:0;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#7c3aed;">Experience</h2>
+              <div style="flex:1;height:1px;background:#ede9fe;"></div>
+            </div>
 
             <!-- Job 1 -->
-            <div style="margin-bottom:20px;">
-              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px;">
-                <span style="font-weight:700; font-size:13.5px; color:#111;">Full-Stack Developer</span>
-                <span style="font-size:11px; color:#888; white-space:nowrap; margin-left:8px;">2021 – Present</span>
+            <div style="margin-bottom:20px;padding-left:14px;border-left:2px solid #ede9fe;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px;">
+                <div>
+                  <span style="font-size:14px;font-weight:800;color:#0f0f1a;">Full-Stack Developer</span>
+                  <span style="font-size:11.5px;color:#7c3aed;font-weight:600;margin-left:8px;">· Self-employed</span>
+                </div>
+                <span style="font-size:10.5px;color:#888;white-space:nowrap;margin-left:8px;background:#f4f4f8;padding:2px 8px;border-radius:99px;font-weight:600;">2021 – Present</span>
               </div>
-              <p style="margin:0 0 8px; font-size:11.5px; color:#666; font-style:italic;">Self-employed · Remote</p>
-              <ul style="margin:0; padding-left:16px; color:#444; font-size:12px; line-height:1.7;">
-                <li style="margin-bottom:3px;">Built production-grade web apps and REST/GraphQL APIs for clients across Southeast Asia and Europe.</li>
-                <li style="margin-bottom:3px;">Architected microservices with Docker, RabbitMQ, and PostgreSQL — deployed via Coolify on self-hosted infra.</li>
-                <li style="margin-bottom:3px;">Developed cross-platform mobile apps with React Native & Expo, published to App Store and Google Play.</li>
-                <li>Mentored junior developers and led code reviews across multiple concurrent projects.</li>
-              </ul>
-              <div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:5px;">
-                ${['TypeScript','Nuxt','React Native','Docker','PostgreSQL','NestJS','Hono'].map(t => `<span style="background:#f0edff; color:#5b21b6; font-size:10px; font-weight:600; padding:2px 8px; border-radius:99px;">${t}</span>`).join('')}
+              <p style="margin:0 0 10px;font-size:10.5px;color:#888;font-style:italic;">Remote · Southeast Asia &amp; Europe</p>
+              <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px;">
+                ${[
+                  'Built production-grade web apps and REST/GraphQL APIs for clients across Southeast Asia and Europe.',
+                  'Architected microservices with Docker, RabbitMQ, and PostgreSQL — deployed via Coolify on self-hosted infrastructure.',
+                  'Developed cross-platform mobile apps with React Native &amp; Expo, published to both App Store and Google Play.',
+                  'Mentored junior developers and led code reviews to maintain quality across concurrent projects.',
+                ].map(p => `<div style="display:flex;align-items:flex-start;gap:7px;font-size:11.5px;color:#444;line-height:1.55;">${dot}<span>${p}</span></div>`).join('')}
               </div>
+              <div style="display:flex;flex-wrap:wrap;gap:5px;">${['TypeScript','NestJS','Hono','Nuxt','React Native','Docker','PostgreSQL','RabbitMQ'].map(pill).join('')}</div>
             </div>
 
             <!-- Job 2 -->
-            <div style="margin-bottom:4px;">
-              <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px;">
-                <span style="font-weight:700; font-size:13.5px; color:#111;">Web Developer</span>
-                <span style="font-size:11px; color:#888; white-space:nowrap; margin-left:8px;">2019 – 2021</span>
+            <div style="padding-left:14px;border-left:2px solid #ede9fe;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px;">
+                <div>
+                  <span style="font-size:14px;font-weight:800;color:#0f0f1a;">Web Developer</span>
+                  <span style="font-size:11.5px;color:#7c3aed;font-weight:600;margin-left:8px;">· Freelance</span>
+                </div>
+                <span style="font-size:10.5px;color:#888;white-space:nowrap;margin-left:8px;background:#f4f4f8;padding:2px 8px;border-radius:99px;font-weight:600;">2019 – 2021</span>
               </div>
-              <p style="margin:0 0 8px; font-size:11.5px; color:#666; font-style:italic;">Freelance · Cambodia</p>
-              <ul style="margin:0; padding-left:16px; color:#444; font-size:12px; line-height:1.7;">
-                <li style="margin-bottom:3px;">Delivered responsive marketing sites and landing pages for local businesses.</li>
-                <li style="margin-bottom:3px;">Progressed from static HTML/CSS to full-stack Vue + Node.js applications over two years.</li>
-                <li>Integrated third-party APIs (payments, maps, CMS) into client projects.</li>
-              </ul>
-              <div style="margin-top:8px; display:flex; flex-wrap:wrap; gap:5px;">
-                ${['Vue','JavaScript','Tailwind CSS','Node.js','MySQL'].map(t => `<span style="background:#f0edff; color:#5b21b6; font-size:10px; font-weight:600; padding:2px 8px; border-radius:99px;">${t}</span>`).join('')}
+              <p style="margin:0 0 10px;font-size:10.5px;color:#888;font-style:italic;">Cambodia · Local businesses</p>
+              <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px;">
+                ${[
+                  'Delivered responsive marketing sites and landing pages for local businesses in Cambodia.',
+                  'Progressed from static HTML/CSS to full-stack Vue + Node.js applications in two years.',
+                  'Integrated third-party APIs including payments, maps, and CMS systems into client projects.',
+                ].map(p => `<div style="display:flex;align-items:flex-start;gap:7px;font-size:11.5px;color:#444;line-height:1.55;">${dot}<span>${p}</span></div>`).join('')}
               </div>
+              <div style="display:flex;flex-wrap:wrap;gap:5px;">${['Vue','JavaScript','Node.js','Tailwind CSS','MySQL'].map(pill).join('')}</div>
             </div>
           </div>
 
           <!-- Projects -->
           <div>
-            <h2 style="margin:0 0 14px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.8px; color:#a78bfa; padding-bottom:8px; border-bottom:1.5px solid #a78bfa;">
-              Featured Projects
-            </h2>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+              <h2 style="margin:0;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#7c3aed;">Featured Projects</h2>
+              <div style="flex:1;height:1px;background:#ede9fe;"></div>
+            </div>
 
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-
-              <div style="background:#fafafa; border:1px solid #ebebeb; border-radius:8px; padding:12px 14px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                  <span style="font-weight:700; font-size:12.5px; color:#111;">Mini Bank API</span>
-                  <span style="font-size:10px; color:#999;">2024</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              ${[
+                {
+                  title: 'Mini Bank API',
+                  year: '2024',
+                  desc: 'Banking REST API with JWT auth, account management, and transactions. Containerized with Docker.',
+                  tech: ['Kotlin','Spring Boot','PostgreSQL','Docker'],
+                  link: 'github.com/RamekhCHHOENG/kotlin-spring-mini-bank',
+                },
+                {
+                  title: 'Todo App',
+                  year: '2023',
+                  desc: 'Full-stack task manager — Next.js 13 frontend + TypeScript API. Real-time updates, deployed on Vercel.',
+                  tech: ['Next.js','TypeScript','REST API'],
+                  link: 'github.com/RamekhCHHOENG/todo-nextjs-typescript',
+                },
+                {
+                  title: 'Portfolio',
+                  year: '2026',
+                  desc: 'This site — Nuxt 4, Tailwind v4, PWA-ready with macOS Tahoe liquid glass design.',
+                  tech: ['Nuxt 4','Vue 3','TypeScript','NuxtUI'],
+                  link: 'ramekhchhoeng.github.io/portfo',
+                },
+                {
+                  title: 'Todo API',
+                  year: '2023',
+                  desc: 'Standalone TypeScript REST API — clean architecture, typed request/response, full CRUD.',
+                  tech: ['TypeScript','Express','Node.js'],
+                  link: 'github.com/RamekhCHHOENG/todo-api-typescript',
+                },
+              ].map(p => `
+                <div style="background:#faf9ff;border:1px solid #ede9fe;border-radius:8px;padding:13px 14px;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                    <span style="font-size:12.5px;font-weight:800;color:#0f0f1a;">${p.title}</span>
+                    <span style="font-size:9.5px;color:#a78bfa;font-weight:700;background:#f0edff;padding:1px 7px;border-radius:99px;">${p.year}</span>
+                  </div>
+                  <p style="margin:0 0 8px;font-size:10.5px;color:#555;line-height:1.55;">${p.desc}</p>
+                  <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:7px;">${p.tech.map(pill).join('')}</div>
+                  <span style="font-size:9.5px;color:#7c3aed;font-weight:600;">↗ ${p.link}</span>
                 </div>
-                <p style="margin:0 0 8px; font-size:11px; color:#555; line-height:1.55;">Banking REST API with JWT auth, account management, and transactions. Kotlin · Spring Boot · Docker · PostgreSQL.</p>
-                <a href="https://github.com/RamekhCHHOENG/kotlin-spring-mini-bank" style="font-size:10px; color:#7c3aed; text-decoration:none; font-weight:600;">github.com/RamekhCHHOENG/kotlin-spring-mini-bank</a>
-              </div>
-
-              <div style="background:#fafafa; border:1px solid #ebebeb; border-radius:8px; padding:12px 14px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                  <span style="font-weight:700; font-size:12.5px; color:#111;">Todo App</span>
-                  <span style="font-size:10px; color:#999;">2023</span>
-                </div>
-                <p style="margin:0 0 8px; font-size:11px; color:#555; line-height:1.55;">Full-stack task manager · Next.js 13 frontend + TypeScript API. Real-time updates, deployed on Vercel.</p>
-                <a href="https://github.com/RamekhCHHOENG/todo-nextjs-typescript" style="font-size:10px; color:#7c3aed; text-decoration:none; font-weight:600;">github.com/RamekhCHHOENG/todo-nextjs-typescript</a>
-              </div>
-
-              <div style="background:#fafafa; border:1px solid #ebebeb; border-radius:8px; padding:12px 14px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                  <span style="font-weight:700; font-size:12.5px; color:#111;">Portfolio</span>
-                  <span style="font-size:10px; color:#999;">2026</span>
-                </div>
-                <p style="margin:0 0 8px; font-size:11px; color:#555; line-height:1.55;">Personal portfolio · Nuxt 4, Tailwind v4, NuxtUI · PWA-ready, liquid glass design, GitHub Pages.</p>
-                <a href="https://ramekhchhoeng.github.io/portfo" style="font-size:10px; color:#7c3aed; text-decoration:none; font-weight:600;">ramekhchhoeng.github.io/portfo</a>
-              </div>
-
-              <div style="background:#fafafa; border:1px solid #ebebeb; border-radius:8px; padding:12px 14px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
-                  <span style="font-weight:700; font-size:12.5px; color:#111;">Todo API</span>
-                  <span style="font-size:10px; color:#999;">2023</span>
-                </div>
-                <p style="margin:0 0 8px; font-size:11px; color:#555; line-height:1.55;">Standalone TypeScript REST API · Clean architecture, typed request/response, full CRUD. Node.js · Express.</p>
-                <a href="https://github.com/RamekhCHHOENG/todo-api-typescript" style="font-size:10px; color:#7c3aed; text-decoration:none; font-weight:600;">github.com/RamekhCHHOENG/todo-api-typescript</a>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Right column (sidebar) -->
-        <div style="width:198px; flex-shrink:0;">
-
-          <!-- Skills -->
-          <div style="margin-bottom:24px;">
-            <h2 style="margin:0 0 12px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.8px; color:#a78bfa; padding-bottom:8px; border-bottom:1.5px solid #a78bfa;">
-              Skills
-            </h2>
-
-            <div style="margin-bottom:12px;">
-              <p style="margin:0 0 6px; font-size:10.5px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:0.8px;">Languages</p>
-              <p style="margin:0; font-size:11.5px; color:#333; line-height:1.7;">TypeScript · JavaScript · Python · Java · Rust · SQL</p>
-            </div>
-
-            <div style="margin-bottom:12px;">
-              <p style="margin:0 0 6px; font-size:10.5px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:0.8px;">Backend</p>
-              <p style="margin:0; font-size:11.5px; color:#333; line-height:1.7;">Hono · NestJS · FastAPI · Express · Spring Boot · Prisma · Bun</p>
-            </div>
-
-            <div style="margin-bottom:12px;">
-              <p style="margin:0 0 6px; font-size:10.5px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:0.8px;">Frontend & Mobile</p>
-              <p style="margin:0; font-size:11.5px; color:#333; line-height:1.7;">Next.js · Nuxt · React · Vue · React Native · Expo · Tailwind</p>
-            </div>
-
-            <div style="margin-bottom:12px;">
-              <p style="margin:0 0 6px; font-size:10.5px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:0.8px;">DevOps & Infra</p>
-              <p style="margin:0; font-size:11.5px; color:#333; line-height:1.7;">Docker · PostgreSQL · Redis · RabbitMQ · MinIO · Coolify · GitHub Actions</p>
-            </div>
-
-            <div>
-              <p style="margin:0 0 6px; font-size:10.5px; font-weight:700; color:#555; text-transform:uppercase; letter-spacing:0.8px;">Tools</p>
-              <p style="margin:0; font-size:11.5px; color:#333; line-height:1.7;">Figma · Postman · VS Code · Raycast</p>
-            </div>
-          </div>
-
-          <!-- Education -->
-          <div style="margin-bottom:24px;">
-            <h2 style="margin:0 0 12px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.8px; color:#a78bfa; padding-bottom:8px; border-bottom:1.5px solid #a78bfa;">
-              Education
-            </h2>
-            <p style="margin:0 0 3px; font-size:12.5px; font-weight:700; color:#111;">Computer Science</p>
-            <p style="margin:0 0 3px; font-size:11px; color:#666; font-style:italic;">Self-directed · 2019 – Present</p>
-            <p style="margin:0; font-size:11px; color:#444; line-height:1.6;">Open-source projects, online courses, and real-world client work.</p>
-          </div>
-
-          <!-- Languages spoken -->
-          <div>
-            <h2 style="margin:0 0 12px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1.8px; color:#a78bfa; padding-bottom:8px; border-bottom:1.5px solid #a78bfa;">
-              Languages
-            </h2>
-            <div style="display:flex; flex-direction:column; gap:5px;">
-              <div style="display:flex; justify-content:space-between;">
-                <span style="font-size:12px; color:#222;">Khmer</span>
-                <span style="font-size:11px; color:#888;">Native</span>
-              </div>
-              <div style="display:flex; justify-content:space-between;">
-                <span style="font-size:12px; color:#222;">English</span>
-                <span style="font-size:11px; color:#888;">Professional</span>
-              </div>
+              `).join('')}
             </div>
           </div>
 
         </div>
-      </div>
-
-      <!-- Footer -->
-      <div style="background:#f7f5ff; border-top:1px solid #e5e0ff; padding:10px 52px; display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-size:10px; color:#888;">ramekhchhoeng@icloud.com</span>
-        <span style="font-size:10px; color:#a78bfa; font-weight:600;">ramekhchhoeng.github.io/portfo</span>
-        <span style="font-size:10px; color:#888;">github.com/RamekhCHHOENG</span>
       </div>
     `
-    return el
+    return root
   }
 
   async function downloadPDF() {
     if (import.meta.server) return
     if (isGenerating.value) return
-
     isGenerating.value = true
 
     try {
@@ -220,13 +217,11 @@ export function usePdfDownload() {
 
       const resumeEl = buildResumeHTML()
 
-      // Wrap in a clipping container at top-left so html2canvas can render it
       const wrapper = document.createElement('div')
       wrapper.style.cssText = 'position:fixed;top:0;left:0;width:794px;height:0;overflow:hidden;z-index:-9999;pointer-events:none;'
       wrapper.appendChild(resumeEl)
       document.body.appendChild(wrapper)
 
-      // Allow one frame for layout to settle
       await new Promise(resolve => requestAnimationFrame(resolve))
 
       const opt = {
@@ -256,6 +251,3 @@ export function usePdfDownload() {
 
   return { downloadPDF, isGenerating }
 }
-
-
-
