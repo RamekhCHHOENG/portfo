@@ -5,27 +5,9 @@ services:
       dockerfile: Dockerfile
       target: runner
     image: ramekhchhoeng-portfolio:latest
-    container_name: portfolio
     restart: unless-stopped
     environment:
       - NUXT_APP_BASE_URL=/
-    expose:
-      - "80"
-    healthcheck:
-      test: ["CMD-SHELL", "wget -q --spider http://localhost/ || exit 1"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-      start_period: 10s
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.portfolio.rule=Host(`portfolio.ramekhchhoeng.com`)
-      - traefik.http.routers.portfolio.entrypoints=websecure
-      - traefik.http.routers.portfolio.tls=true
-      - traefik.http.services.portfolio.loadbalancer.server.port=80
-    networks:
-      - coolify
+    ports:
+      - "80:80"
 
-networks:
-  coolify:
-    external: true
