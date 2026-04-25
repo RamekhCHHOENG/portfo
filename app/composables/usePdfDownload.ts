@@ -147,7 +147,7 @@ export function usePdfDownload() {
             </div>
 
             <!-- Job 1 -->
-            <div style="margin-bottom:16px;padding-left:12px;border-left:2px solid #ede9fe;">
+            <div style="margin-bottom:16px;padding-left:12px;border-left:2px solid #ede9fe;page-break-inside:avoid;">
               <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1px;">
                 <div>
                   <span style="font-size:13.5px;font-weight:800;color:#0f0f1a;">Frontend Engineer Lead</span>
@@ -169,7 +169,7 @@ export function usePdfDownload() {
             </div>
 
             <!-- Job 2 -->
-            <div style="margin-bottom:16px;padding-left:12px;border-left:2px solid #ede9fe;">
+            <div style="margin-bottom:16px;padding-left:12px;border-left:2px solid #ede9fe;page-break-inside:avoid;">
               <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1px;">
                 <div>
                   <span style="font-size:13.5px;font-weight:800;color:#0f0f1a;">Software Developer</span>
@@ -191,7 +191,7 @@ export function usePdfDownload() {
             </div>
 
             <!-- Job 3 -->
-            <div style="padding-left:12px;border-left:2px solid #ede9fe;">
+            <div style="padding-left:12px;border-left:2px solid #ede9fe;page-break-inside:avoid;">
               <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1px;">
                 <div>
                   <span style="font-size:13.5px;font-weight:800;color:#0f0f1a;">iOS Developer</span>
@@ -249,7 +249,7 @@ export function usePdfDownload() {
                   link: 'github.com/RamekhCHHOENG/todo-api-typescript',
                 },
               ].map(p => `
-                <div style="background:#faf9ff;border:1px solid #ede9fe;border-radius:8px;padding:11px 13px;">
+                <div style="background:#faf9ff;border:1px solid #ede9fe;border-radius:8px;padding:11px 13px;page-break-inside:avoid;">
                   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
                     <span style="font-size:12px;font-weight:800;color:#0f0f1a;">${p.title}</span>
                     <span style="font-size:9px;color:#a78bfa;font-weight:700;background:#f0edff;padding:1px 7px;border-radius:99px;">${p.year}</span>
@@ -299,6 +299,7 @@ export function usePdfDownload() {
           windowWidth: 794,
         },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: 'css' },
       }
 
       await html2pdf().set(opt).from(resumeEl).save()
