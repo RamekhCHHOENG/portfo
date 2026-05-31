@@ -102,6 +102,25 @@ html {
     z-index: 0;
   }
   .glass-card > * { position: relative; z-index: 1; }
+
+  /* Cursor spotlight — radial glow that tracks mouse position */
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      circle at var(--sx, 50%) var(--sy, 50%),
+      rgba(255, 255, 255, 0.11) 0%,
+      transparent 62%
+    );
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.35s ease;
+  }
+  .glass-card:hover::after { opacity: 1; }
+
   .glass-card:hover {
     background: linear-gradient(
       145deg,
@@ -152,6 +171,20 @@ html {
   /* Section divider */
   .glass-divider { border-top: 1px solid rgba(255, 255, 255, 0.065); }
 
+}
+
+/* Hero gradient shimmer */
+@keyframes gradientPan {
+  from { background-position: 0% center; }
+  to   { background-position: -200% center; }
+}
+.gradient-shimmer {
+  background: linear-gradient(120deg, #ffffff 0%, #ddd6fe 25%, #93c5fd 50%, #ffffff 75%, #ddd6fe 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientPan 5s linear infinite;
 }
 
 /* --- Fade-up animation --- */

@@ -4,6 +4,16 @@ export default defineNuxtPlugin(() => {
   const tiltDone = new WeakSet<Element>()
   const magDone = new WeakSet<Element>()
 
+  // ─── Card cursor spotlight ────────────────────────────────────────────────
+  function attachSpotlight(el: HTMLElement) {
+    if (tiltDone.has(el)) return   // reuse tiltDone guard (spotlight runs with tilt)
+    el.addEventListener('mousemove', (e: MouseEvent) => {
+      const r = el.getBoundingClientRect()
+      el.style.setProperty('--sx', `${((e.clientX - r.left) / r.width * 100).toFixed(1)}%`)
+      el.style.setProperty('--sy', `${((e.clientY - r.top) / r.height * 100).toFixed(1)}%`)
+    })
+  }
+
   // ─── 3-D card tilt ────────────────────────────────────────────────────────
   function attachTilt(el: HTMLElement) {
     if (tiltDone.has(el)) return
@@ -59,7 +69,10 @@ export default defineNuxtPlugin(() => {
 
   // ─── Scan & attach ────────────────────────────────────────────────────────
   function init() {
-    document.querySelectorAll<HTMLElement>('.glass-card').forEach(attachTilt)
+    document.querySelectorAll<HTMLElement>('.glass-card').forEach(el => {
+      attachSpotlight(el)
+      attachTilt(el)
+    })
     document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach(attachMagnetic)
   }
 

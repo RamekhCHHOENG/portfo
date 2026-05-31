@@ -26,7 +26,7 @@
       <!-- Main headline -->
       <h1 class="text-[48px] sm:text-[68px] lg:text-[84px] font-bold tracking-[-0.04em] leading-[1] mb-6 fade-up fade-up-1">
         Building Exceptional<br>
-        <span class="bg-gradient-to-br from-white via-violet-200 to-blue-300 bg-clip-text text-transparent">
+        <span class="gradient-shimmer">
           User Experiences.
         </span>
       </h1>

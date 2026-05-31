@@ -33,5 +33,6 @@
     </div>
     <NuxtPage />
     <FilmGrain />
+    <LoadingScreen />
   </div>
 </template>
