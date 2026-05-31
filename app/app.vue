@@ -34,5 +34,6 @@
     <NuxtPage />
     <FilmGrain />
     <LoadingScreen />
+    <ClientOnly><CustomCursor /></ClientOnly>
   </div>
 </template>

@@ -67,6 +67,41 @@ export default defineNuxtPlugin(() => {
     document.addEventListener('mousemove', onMove)
   }
 
+  // ─── Scroll reveal ─────────────────────────────────────────────────────────
+  function initReveal() {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return
+        const el = entry.target as HTMLElement
+        const delay = el.classList.contains('fade-up-4') ? 550
+                    : el.classList.contains('fade-up-3') ? 400
+                    : el.classList.contains('fade-up-2') ? 250
+                    : el.classList.contains('fade-up-1') ? 100
+                    : 0
+        setTimeout(() => el.classList.add('is-visible'), delay)
+        obs.unobserve(el)
+      })
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' })
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el))
+  }
+
+  // ─── Orb parallax ─────────────────────────────────────────────────────────
+  function initOrbParallax() {
+    const container = document.querySelector<HTMLElement>('.orb-container')
+    if (!container) return
+    let tx = 0, ty = 0, cx = 0, cy = 0
+    document.addEventListener('mousemove', (e: MouseEvent) => {
+      tx = (e.clientX / window.innerWidth  - 0.5) * -24
+      ty = (e.clientY / window.innerHeight - 0.5) * -24
+    }, { passive: true })
+    ;(function tick() {
+      cx += (tx - cx) * 0.04
+      cy += (ty - cy) * 0.04
+      container.style.transform = `translate(${cx.toFixed(2)}px, ${cy.toFixed(2)}px)`
+      requestAnimationFrame(tick)
+    })()
+  }
+
   // ─── Scan & attach ────────────────────────────────────────────────────────
   function init() {
     document.querySelectorAll<HTMLElement>('.glass-card').forEach(el => {
@@ -74,6 +109,8 @@ export default defineNuxtPlugin(() => {
       attachTilt(el)
     })
     document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach(attachMagnetic)
+    initReveal()
+    initOrbParallax()
   }
 
   window.addEventListener('load', () => requestAnimationFrame(() => setTimeout(init, 80)))

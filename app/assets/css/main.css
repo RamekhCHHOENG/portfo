@@ -187,20 +187,17 @@ html {
   animation: gradientPan 5s linear infinite;
 }
 
-/* --- Fade-up animation --- */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
+/* --- Fade-up scroll reveal --- */
 .fade-up {
   opacity: 0;
-  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.fade-up-1 { animation-delay: 0.10s; }
-.fade-up-2 { animation-delay: 0.25s; }
-.fade-up-3 { animation-delay: 0.40s; }
-.fade-up-4 { animation-delay: 0.55s; }
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Spin for PDF loading */
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -221,10 +218,17 @@ html {
   will-change: transform;
 }
 
+/* --- Custom cursor --- */
+.custom-cursor-active,
+.custom-cursor-active a,
+.custom-cursor-active button {
+  cursor: none !important;
+}
+
 /* Reduced-motion: skip all animations */
 @media (prefers-reduced-motion: reduce) {
   .blink-cursor { animation: none; opacity: 1; }
-  .fade-up { animation: none !important; opacity: 1 !important; }
+  .fade-up { transition: none !important; opacity: 1 !important; transform: none !important; }
   .tilt-card { transform: none !important; transition: none !important; }
   .marquee-track { animation-play-state: paused; }
 }
