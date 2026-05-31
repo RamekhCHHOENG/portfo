@@ -312,10 +312,11 @@ export function usePdfDownload() {
   // ── View resume as HTML in a new tab ──────────────────────────────────────
   async function viewResume() {
     if (import.meta.server) return
-    const photoSrc = await loadPhotoDataURL()
-    const el = buildResumeHTML(photoSrc)
+    // Open window BEFORE any await so popup blockers see the user gesture
     const win = window.open('', '_blank', 'noopener,noreferrer')
     if (!win) return
+    const photoSrc = await loadPhotoDataURL()
+    const el = buildResumeHTML(photoSrc)
     win.document.write(`<!DOCTYPE html>
 <html lang="en">
 <head>
