@@ -32,5 +32,6 @@
       />
     </div>
     <NuxtPage />
+    <FilmGrain />
   </div>
 </template>

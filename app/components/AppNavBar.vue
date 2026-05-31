@@ -32,6 +32,7 @@
       <!-- Right side -->
       <div class="flex items-center gap-4">
         <button
+          data-magnetic
           class="no-print hidden md:inline-flex items-center gap-1.5 text-sm px-4 py-1.5 bg-white/92 text-black rounded-full font-semibold hover:bg-white disabled:opacity-50 transition-colors shadow-sm"
           :disabled="isGenerating"
           @click="downloadPDF"

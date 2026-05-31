@@ -47,6 +47,7 @@
       <div class="flex flex-wrap items-center justify-center gap-3 no-print fade-up fade-up-3">
         <a
           href="#projects"
+          data-magnetic
           class="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-white/90 transition-colors shadow-[0_2px_20px_rgba(255,255,255,0.18)]"
         >
           View Projects
@@ -55,6 +56,7 @@
           </svg>
         </a>
         <button
+          data-magnetic
           class="no-print glass-sm inline-flex items-center gap-2 px-6 py-2.5 text-white/80 text-sm font-medium rounded-full hover:text-white disabled:opacity-50"
           :disabled="isGenerating"
           @click="downloadPDF"
