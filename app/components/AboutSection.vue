@@ -1,5 +1,5 @@
 <template>
-  <section id="about" class="py-32 px-6 glass-divider">
+  <section id="about" class="pt-32 pb-8 px-6 glass-divider">
     <div class="max-w-6xl mx-auto">
 
       <!-- Top: photo + intro -->
@@ -121,65 +121,77 @@
 <script setup lang="ts">
 const experience = [
   {
-    title: 'Full-Stack Developer',
-    company: 'Self-employed',
-    date: '2021 – Present',
+    title: 'Software Developer (Frontend Lead)',
+    company: 'IDEALINK CONSULTING LTD',
+    date: 'Dec 2022 – Present',
     points: [
-      'Built and shipped production-grade web apps and REST/GraphQL APIs for clients across Southeast Asia and Europe.',
-      'Architected microservices with Docker, RabbitMQ, and PostgreSQL — deployed and managed via Coolify on self-hosted infra.',
-      'Developed cross-platform mobile apps with React Native & Expo, publishing to both App Store and Google Play.',
-      'Mentored junior developers and led code reviews to maintain quality and consistency across projects.',
+      'Established the core project infrastructure from the ground up for major enterprise initiatives.',
+      'Successfully built and launched a suite of web applications using Vue.js and modern frontend tooling.',
+      'Contributed to the design of web application user interfaces, ensuring high usability and aesthetic appeal.',
+      'Led bug fixing and maintenance tasks, optimizing web functionality and performance across production apps.',
     ],
-    tags: ['TypeScript', 'Nuxt', 'React Native', 'Docker', 'PostgreSQL'],
+    tags: ['Vue.js', 'TypeScript', 'Project Lead', 'Infrastructure'],
   },
   {
-    title: 'Web Developer',
-    company: 'Freelance',
-    date: '2019 – 2021',
+    title: 'Software Developer',
+    company: 'Soramitsu Khmer Co., Ltd',
+    date: 'Jan 2020 – Dec 2022',
     points: [
-      'Delivered responsive marketing sites and landing pages for local businesses in Cambodia.',
-      'Grew from static HTML/CSS to full-stack Vue + Node.js applications over two years.',
-      'Integrated third-party APIs (payments, maps, CMS) into client projects.',
+      'Contributed to and completed 3 major projects utilizing Vue.js for enterprise and government solutions.',
+      'Collaborated with cross-functional teams to implement front-end features based on complex business requirements.',
+      'Developed and maintained custom component libraries to ensure consistency across multiple project surfaces.',
+      'Addressed and resolved complex architectural bugs to ensure smooth system functionality.',
     ],
-    tags: ['Vue', 'JavaScript', 'Tailwind CSS', 'Node.js'],
+    tags: ['Vue.js', 'Enterprise Solutions', 'Component Library', 'Collaboration'],
+  },
+  {
+    title: 'iOS Developer (Internship)',
+    company: 'Self-Directed / Startup Project',
+    date: 'Sep 2019 – Jan 2020',
+    points: [
+      'Played a key role in developing a product using Swift (Programmatically) based on specific business needs.',
+      'Participated in end-to-end product development, from initial feature implementation to bug fixing and maintenance.',
+      'Ensured continuous functionality and quality through rigorous testing and iterative updates.',
+    ],
+    tags: ['Swift', 'iOS Development', 'Programmatic UI'],
   },
 ]
 
 const cards = [
   {
-    emoji: '📍',
-    title: 'Location',
-    desc: 'Based in Cambodia. Self-hosted infra via Coolify.',
+    emoji: '🎓',
+    title: 'Education',
+    desc: 'Bachelor of Computer Science from University of Puthisastra (UP).',
   },
   {
-    emoji: '🚀',
-    title: '25+ Projects',
-    desc: 'Web, mobile, microservices, and AI agents.',
+    emoji: '💻',
+    title: 'Experience',
+    desc: '4.5+ years as a Frontend Developer & Lead across enterprise and product teams.',
   },
   {
     emoji: '🛠️',
-    title: 'Full-Stack',
-    desc: 'TypeScript, Python, React, Vue, Node, and more.',
+    title: 'Tech Stack',
+    desc: 'Specializing in Vue.js, TypeScript, Swift, and modern web frameworks.',
   },
   {
-    emoji: '📱',
-    title: 'Mobile',
-    desc: 'React Native & Expo cross-platform apps.',
+    emoji: '🌏',
+    title: 'Location',
+    desc: 'Based in Phnom Penh, Cambodia. Open to collaborative success.',
   },
 ]
 
 const values = [
   {
-    title: 'Quality over speed',
-    desc: 'Thoughtful architecture and clean code always win over rushing to ship. I take the time to do things right.',
+    title: 'Infrastructure First',
+    desc: 'I believe in establishing strong core project foundations from the ground up to ensure long-term scalability.',
   },
   {
-    title: 'User-first thinking',
-    desc: 'Every technical decision is weighed against its impact on the end user. Performance and accessibility are non-negotiable.',
+    title: 'High-Quality UI/UX',
+    desc: 'Committed to delivering polished, high-quality user interfaces that meet both business and user needs.',
   },
   {
-    title: 'Continuous learning',
-    desc: 'The web moves fast. I stay current through open-source contributions, personal projects, and community involvement.',
+    title: 'Collaborative Growth',
+    desc: 'I strive to foster collaborative success and contribute significantly to team growth through mentorship and best practices.',
   },
 ]
 </script>

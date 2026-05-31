@@ -1,5 +1,10 @@
 <template>
-  <section id="contact" class="py-32 px-6 glass-divider">
+  <section id="contact" class="relative pt-32 pb-16 px-6 glass-divider overflow-hidden">
+    <!-- Decorative ambient orb -->
+    <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+      <div class="absolute w-[600px] h-[600px] rounded-full opacity-[0.07] blur-[120px]"
+           style="background: #7c3aed; right: -15%; top: 50%; transform: translateY(-50%);" />
+    </div>
     <div class="max-w-6xl mx-auto">
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">

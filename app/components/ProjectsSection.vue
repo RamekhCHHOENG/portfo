@@ -1,24 +1,43 @@
 <template>
   <section id="projects" class="py-32 px-6 glass-divider">
     <div class="max-w-6xl mx-auto">
-      <div class="mb-16 fade-up">
+      <div class="mb-10 fade-up">
         <p class="text-xs text-violet-400 uppercase tracking-widest font-medium mb-3">Work</p>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
           Things I've built.
         </h2>
-        <p class="text-white/50 max-w-xl leading-relaxed">
+        <p class="text-white/50 max-w-xl leading-relaxed mb-8">
           A selection of personal and learning projects — backend services, full-stack apps, and experiments.
         </p>
+
+        <!-- Filter Tags -->
+        <div class="flex flex-wrap gap-2">
+          <button
+            v-for="filter in filters"
+            :key="filter"
+            @click="activeFilter = filter"
+            :class="[
+              'px-4 py-1.5 rounded-full text-xs font-medium transition-colors border',
+              activeFilter === filter 
+                ? 'bg-white text-black border-white' 
+                : 'bg-transparent text-white/60 border-white/10 hover:border-white/30 hover:text-white'
+            ]"
+          >
+            {{ filter }}
+          </button>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div
-          v-for="(project, i) in projects"
+      <TransitionGroup tag="div" name="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div
+            v-for="(project, i) in filteredProjects"
           :key="project.title"
           :class="[
-            'group flex flex-col glass-card rounded-2xl overflow-hidden',
+            'group flex flex-col glass-card rounded-2xl overflow-hidden tilt-card',
             `fade-up fade-up-${(i % 3) + 1}`,
           ]"
+          @mousemove="e => onTiltMove(e, e.currentTarget as HTMLElement)"
+          @mouseleave="e => onTiltLeave(e.currentTarget as HTMLElement)"
         >
           <!-- Gradient header -->
           <div class="relative h-36 flex items-center justify-center overflow-hidden" :style="{ background: project.gradient }">
@@ -75,70 +94,116 @@
                 </svg>
                 Live
               </a>
-            </div>
           </div>
         </div>
-      </div>
+        </div>
+      </TransitionGroup>
     </div>
   </section>
 </template>
 
+<style scoped>
+.project-list-move,
+.project-list-enter-active,
+.project-list-leave-active {
+  transition: all 0.4s ease;
+}
+.project-list-enter-from,
+.project-list-leave-to {
+  opacity: 0;
+  transform: translateY(15px);
+}
+.project-list-leave-active {
+  position: absolute;
+}
+</style>
+
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+
+const activeFilter = ref('All')
+const filters = ['All', 'Next.js', 'Vue.js', 'Kotlin', 'Python', 'Mobile']
+
+const filteredProjects = computed(() => {
+  if (activeFilter.value === 'All') return projects
+  return projects.filter(p => p.tech.some(t => t.includes(activeFilter.value)))
+})
+
+const canTilt = import.meta.client
+  ? window.matchMedia('(hover: hover) and (pointer: fine)').matches
+  : false
+
+function onTiltMove(e: MouseEvent, el: HTMLElement) {
+  if (!canTilt) return
+  const rect = el.getBoundingClientRect()
+  const x = e.clientX - rect.left
+  const y = e.clientY - rect.top
+  const rotX = ((y - rect.height / 2) / rect.height) * -10
+  const rotY = ((x - rect.width / 2) / rect.width) * 10
+  el.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`
+  el.style.transition = 'transform 0.1s ease-out'
+}
+
+function onTiltLeave(el: HTMLElement) {
+  el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)'
+  el.style.transition = 'transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
+}
+
 const projects = [
+  {
+    title: 'Enterprise Management System',
+    initials: 'EM',
+    desc: 'Led the development of a complex management platform using Vue.js and Vuetify. Featured advanced data visualization, professional training modules, and business technology integration.',
+    gradient: 'linear-gradient(135deg, #2e1a47 0%, #431d6e 50%, #5b21b6 100%)',
+    github: null,
+    demo: null,
+    release: '2023',
+    featured: true,
+    tech: ['Vue.js', 'Vuetify', 'TypeScript', 'Lead'],
+  },
+  {
+    title: 'EV Station KH',
+    initials: 'EV',
+    desc: 'Cambodia EV charging station locator with interactive maps, real-time station status, and mobile companion app. Built with Next.js, NestJS and PostGIS.',
+    gradient: 'linear-gradient(135deg, #064e3b 0%, #065f46 50%, #10b981 100%)',
+    github: null,
+    demo: null,
+    release: '2024',
+    featured: true,
+    tech: ['Next.js', 'NestJS', 'React Native', 'Mobile', 'PostGIS'],
+  },
   {
     title: 'Mini Bank API',
     initials: 'MB',
-    desc: 'Banking REST API built with Kotlin and Spring Boot. Includes JWT authentication, account management, and transaction endpoints — containerized with Docker and backed by PostgreSQL.',
+    desc: 'Banking REST API built with Kotlin and Spring Boot. Includes JWT authentication, account management, and transaction endpoints.',
     gradient: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
     github: 'https://github.com/RamekhCHHOENG/kotlin-spring-mini-bank',
     demo: null,
     release: '2024',
-    featured: true,
-    tech: ['Kotlin', 'Spring Boot', 'JWT', 'PostgreSQL', 'Docker'],
-  },
-  {
-    title: 'Todo App',
-    initials: 'TA',
-    desc: 'Full-stack task manager with a Next.js 13 frontend and TypeScript REST API backend. Features CRUD, real-time updates, deployed on Vercel.',
-    gradient: 'linear-gradient(135deg, #0d0d1a 0%, #1a0d2e 50%, #2d1b69 100%)',
-    github: 'https://github.com/RamekhCHHOENG/todo-nextjs-typescript',
-    demo: 'https://todo-nextjs-typescript.vercel.app/',
-    release: '2023',
-    featured: true,
-    tech: ['Next.js', 'TypeScript', 'REST API', 'Vercel'],
-  },
-  {
-    title: 'Todo API',
-    initials: 'T/',
-    desc: 'Standalone TypeScript REST API backend. Clean architecture with typed request/response handling and full CRUD support.',
-    gradient: 'linear-gradient(135deg, #0a1628 0%, #0d2137 50%, #0a3d62 100%)',
-    github: 'https://github.com/RamekhCHHOENG/todo-api-typescript',
-    demo: null,
-    release: '2023',
     featured: false,
-    tech: ['TypeScript', 'Node.js', 'REST API', 'Express'],
+    tech: ['Kotlin', 'Spring Boot', 'PostgreSQL'],
   },
   {
-    title: 'Learning Service',
-    initials: 'LS',
-    desc: 'Java Spring Boot microservice exploring backend patterns. Integrates PostgreSQL with JPA and demonstrates clean service-layer architecture.',
-    gradient: 'linear-gradient(135deg, #1a0a0a 0%, #2d1515 50%, #5c2020 100%)',
-    github: 'https://github.com/RamekhCHHOENG/learning-service',
+    title: 'AGI Assistant Monorepo',
+    initials: 'AI',
+    desc: 'A 25+ project monorepo spanning web, mobile, microservices, AI agents, and self-hosted infra. Deployed on Coolify with shared Docker services.',
+    gradient: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)',
+    github: null,
     demo: null,
-    release: '2026',
+    release: '2025',
     featured: false,
-    tech: ['Java', 'Spring Boot', 'PostgreSQL', 'JPA', 'Gradle'],
+    tech: ['Python', 'TypeScript', 'Docker', 'Next.js'],
   },
   {
-    title: 'Portfolio',
+    title: 'Portfolio 2026',
     initials: 'RC',
-    desc: 'This site — dark-themed developer portfolio built with Nuxt 4, TailwindCSS v4, and NuxtUI. PWA-ready, fully responsive, self-hosted via Coolify.',
+    desc: 'A premium developer portfolio built with Nuxt 4, TailwindCSS, and high-end animations. Optimized for performance and PDF resume generation.',
     gradient: 'linear-gradient(135deg, #09090b 0%, #18181b 50%, #27272a 100%)',
     github: 'https://github.com/RamekhCHHOENG/portfolio',
-    demo: 'https://ramekhchhoeng.online/',
+    demo: 'https://ramekhchhoeng.github.io',
     release: '2026',
     featured: false,
-    tech: ['Nuxt 4', 'Vue 3', 'TailwindCSS', 'NuxtUI', 'TypeScript'],
+    tech: ['Next.js', 'TypeScript', 'Nuxt', 'Animations'],
   },
   {
     title: 'More on GitHub',

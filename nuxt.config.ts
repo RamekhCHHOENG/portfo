@@ -64,7 +64,6 @@ export default defineNuxtConfig({
     },
     devOptions: {
       enabled: false,
-      type: 'module',
     },
   },
 
@@ -73,16 +72,16 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'Ramekhchhoeng – Full-Stack Developer',
+      title: 'Ramekh Chhoeng – Frontend Engineer Lead',
       meta: [
-        { name: 'description', content: 'Personal portfolio of Ramekhchhoeng, a Full-Stack Developer specializing in TypeScript, Python, and modern web technologies.' },
+        { name: 'description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
         { name: 'theme-color', content: '#6366f1' },
-        { property: 'og:title', content: 'Ramekhchhoeng – Full-Stack Developer' },
-        { property: 'og:description', content: 'Personal portfolio showcasing projects in TypeScript, Python, React, and more.' },
+        { property: 'og:title', content: 'Ramekh Chhoeng – Frontend Engineer Lead' },
+        { property: 'og:description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
         { property: 'og:type', content: 'website' },
       ],
       link: [
-        { rel: 'manifest', href: '/manifest.webmanifest' },
+        // Manifest is handled by @vite-pwa/nuxt automatically
         { rel: 'apple-touch-icon', href: '/icons/icon-192.png' },
         { rel: 'icon', type: 'image/png', href: '/icons/icon-192.png' },
       ],
@@ -95,7 +94,7 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: ['html2pdf.js'],
+      include: ['html2pdf.js', 'workbox-window'],
     },
   },
 })

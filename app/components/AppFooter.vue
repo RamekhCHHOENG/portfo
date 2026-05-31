@@ -2,7 +2,7 @@
   <footer class="no-print glass-divider" style="background: rgba(6,2,14,0.6); backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-xs text-white/30">
-        © {{ year }} Ramekhchhoeng. Built with Nuxt 4 &amp; Tailwind CSS.
+        © {{ year }} Ramekh Chhoeng. Built with Nuxt 4 &amp; Tailwind CSS.
       </p>
       <div class="flex gap-6">
           <a href="mailto:ramekhchhoeng@icloud.com" class="text-xs text-white/30 hover:text-white/70 transition-colors">Email</a>

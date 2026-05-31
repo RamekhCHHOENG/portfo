@@ -3,20 +3,20 @@
     id="hero"
     class="relative min-h-screen flex flex-col items-center justify-center text-white pt-14 px-6 text-center overflow-hidden"
   >
-    <!-- Subtle dot grid -->
-    <div
-      class="pointer-events-none absolute inset-0 opacity-[0.018]"
-      style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 36px 36px;"
-    />
 
+    <!-- Page content (above the canvas) -->
     <div class="relative z-10 max-w-4xl mx-auto">
       <!-- Profile + badge row -->
       <div class="flex flex-col items-center gap-4 mb-10 fade-up">
-        <img
-          src="/ramekhchhoeng.jpg"
-          alt="Ramekhchhoeng"
-          class="w-16 h-16 rounded-full object-cover shadow-[0_0_0_2px_rgba(255,255,255,0.18),0_0_0_5px_rgba(255,255,255,0.06)] shadow-lg"
-        />
+        <div class="relative">
+          <div class="absolute inset-0 rounded-full scale-150 blur-2xl opacity-50"
+               style="background: radial-gradient(circle, rgba(139,92,246,0.7) 0%, transparent 70%);" />
+          <img
+            src="/ramekhchhoeng.jpg"
+            alt="Ramekhchhoeng"
+            class="relative w-16 h-16 rounded-full object-cover shadow-[0_0_0_2px_rgba(139,92,246,0.5),0_0_0_5px_rgba(139,92,246,0.12),0_8px_32px_rgba(0,0,0,0.6)]"
+          />
+        </div>
         <div class="glass-sm inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs text-white/60">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
           Available for new opportunities
@@ -24,19 +24,23 @@
       </div>
 
       <!-- Main headline -->
-      <h1
-        class="text-[48px] sm:text-[68px] lg:text-[84px] font-bold tracking-[-0.04em] leading-[1] mb-6 fade-up fade-up-1"
-      >
-        Turning Ideas into<br>
+      <h1 class="text-[48px] sm:text-[68px] lg:text-[84px] font-bold tracking-[-0.04em] leading-[1] mb-6 fade-up fade-up-1">
+        Building Exceptional<br>
         <span class="bg-gradient-to-br from-white via-violet-200 to-blue-300 bg-clip-text text-transparent">
-          Reality.
+          User Experiences.
         </span>
       </h1>
 
-      <!-- Subtitle -->
-      <p class="text-base sm:text-lg text-white/55 max-w-2xl mx-auto leading-relaxed mb-10 fade-up fade-up-2">
-        I'm <span class="text-white/90 font-medium">Ramekhchhoeng</span> — a full-stack developer based in Cambodia with 4+ years of
-        experience building production web apps, REST APIs, and mobile apps that ship to real users.
+      <!-- Subtitle with typewriter -->
+      <p
+        class="text-base sm:text-lg text-white/55 max-w-2xl mx-auto leading-relaxed mb-10 fade-up fade-up-2"
+        aria-label="I'm Ramekh Chhoeng — a Frontend Engineer Lead & Full-Stack Developer based in Phnom Penh with over 4.5 years of experience."
+      >
+        I'm <span class="text-white/90 font-medium">Ramekh Chhoeng</span> — a
+        <span aria-hidden="true" class="inline-flex items-baseline gap-px">
+          <span class="text-white/90 font-medium">{{ displayed }}</span><span class="blink-cursor text-violet-400">|</span>
+        </span>
+        based in Phnom Penh with over 4.5 years of experience.
       </p>
 
       <!-- CTAs -->
@@ -66,11 +70,11 @@
         </button>
       </div>
 
-      <!-- Stats row (liquid glass pill) -->
-      <div class="mt-14 fade-up fade-up-3">
+      <!-- Stats row with count-up animation -->
+      <div ref="statsRef" class="mt-14 fade-up fade-up-3">
         <div class="glass-sm inline-flex flex-wrap items-center justify-center gap-0 rounded-2xl overflow-hidden divide-x divide-white/10">
-          <div v-for="stat in stats" :key="stat.label" class="px-6 py-4 text-center">
-            <p class="text-xl font-bold text-white tracking-tight">{{ stat.value }}</p>
+          <div v-for="(stat, i) in stats" :key="stat.label" class="px-6 py-4 text-center">
+            <p class="text-xl font-bold text-white tracking-tight">{{ stat.display ?? (counts[i] + stat.suffix) }}</p>
             <p class="text-[11px] text-white/45 mt-0.5 whitespace-nowrap">{{ stat.label }}</p>
           </div>
         </div>
@@ -107,10 +111,23 @@
 <script setup lang="ts">
 const { downloadPDF, isGenerating } = usePdfDownload()
 
+const { displayed } = useTypewriter([
+  'Frontend Engineer Lead',
+  'Full-Stack Developer',
+  'Mobile App Builder',
+  'Open Source Contributor',
+])
+
 const stats = [
-  { value: '4+', label: 'Years of experience' },
-  { value: '25+', label: 'Projects delivered' },
-  { value: '15+', label: 'Technologies' },
-  { value: '2', label: 'Open source repos' },
+  { num: 4, suffix: '+', label: 'Years of experience', display: '4.5+' },
+  { num: 25, suffix: '+', label: 'Projects delivered' },
+  { num: 15, suffix: '+', label: 'Technologies' },
+  { num: 2, suffix: '', label: 'Open source repos' },
 ]
+
+const { counts, observe } = useCountUp(stats.map(s => s.num))
+const statsRef = ref<HTMLElement | null>(null)
+onMounted(() => { if (statsRef.value) observe(statsRef.value) })
+
+
 </script>

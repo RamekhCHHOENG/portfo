@@ -2,6 +2,11 @@
 @import "tailwindcss";
 @import "#build/ui.css";
 
+/* Radius system: 6px base */
+:root {
+  --ui-radius: 0.375rem;
+}
+
 /* SF Pro System Font Stack */
 html {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
@@ -31,74 +36,123 @@ html {
   66%       { transform: translate(30px, -45px) scale(1.06); }
 }
 
-/* === Liquid Glass utilities === */
-
-/* Navigation bar glass */
-.glass-nav {
-  background: rgba(6, 2, 14, 0.78);
-  backdrop-filter: blur(48px) saturate(200%);
-  -webkit-backdrop-filter: blur(48px) saturate(200%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 1px 28px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* Full glass panel (section-level) */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.028);
-  backdrop-filter: blur(24px) saturate(150%);
-  -webkit-backdrop-filter: blur(24px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.065);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 32px rgba(0, 0, 0, 0.35);
+.marquee-track {
+  animation: marquee 40s linear infinite;
 }
 
-/* Card-level glass */
-.glass-card {
-  background: rgba(255, 255, 255, 0.052);
-  backdrop-filter: blur(48px) saturate(180%);
-  -webkit-backdrop-filter: blur(48px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.095);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13), 0 8px 48px rgba(0, 0, 0, 0.45);
-  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.085);
-  border-color: rgba(255, 255, 255, 0.17);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 16px 64px rgba(0, 0, 0, 0.55);
-}
+/* === Liquid Glass utilities (in @layer components so Tailwind utilities override) === */
+@layer components {
 
-/* Small glass element (pill, badge, button) */
-.glass-sm {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13);
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-.glass-sm:hover {
-  background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.18);
-}
+  /* Navigation bar glass */
+  .glass-nav {
+    background: rgba(6, 2, 14, 0.78);
+    backdrop-filter: blur(48px) saturate(200%);
+    -webkit-backdrop-filter: blur(48px) saturate(200%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 1px 28px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
 
-/* Form input glass */
-.glass-input {
-  background: rgba(255, 255, 255, 0.045);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  color: rgba(255, 255, 255, 0.92);
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.glass-input::placeholder { color: rgba(255, 255, 255, 0.28); }
-.glass-input:focus {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.22);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.14);
-}
+  /* Full glass panel (section-level) */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.028);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.065);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 32px rgba(0, 0, 0, 0.35);
+  }
 
-/* Section divider */
-.glass-divider { border-top: 1px solid rgba(255, 255, 255, 0.065); }
+  /* Card-level glass — liquid glass material */
+  .glass-card {
+    position: relative;
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.11) 0%,
+      rgba(255, 255, 255, 0.05) 55%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(40px) saturate(180%) brightness(1.06);
+    -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.32);
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+      inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
+      0 8px 40px rgba(0, 0, 0, 0.45),
+      0 2px 12px rgba(0, 0, 0, 0.25);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  /* Specular glare — top-right highlight simulating light off glass */
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      ellipse 60% 38% at 72% 12%,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.05) 45%,
+      transparent 72%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .glass-card > * { position: relative; z-index: 1; }
+  .glass-card:hover {
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0.08) 55%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    border-top-color: rgba(255, 255, 255, 0.45);
+    border-left-color: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow:
+      inset 0 1.5px 0 rgba(255, 255, 255, 0.32),
+      0 16px 64px rgba(0, 0, 0, 0.55),
+      0 4px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Small glass element (pill, badge, button) */
+  .glass-sm {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.13);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .glass-sm:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  /* Form input glass */
+  .glass-input {
+    background: rgba(255, 255, 255, 0.045);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    color: rgba(255, 255, 255, 0.92);
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .glass-input::placeholder { color: rgba(255, 255, 255, 0.28); }
+  .glass-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.14);
+  }
+
+  /* Section divider */
+  .glass-divider { border-top: 1px solid rgba(255, 255, 255, 0.065); }
+
+}
 
 /* --- Fade-up animation --- */
 @keyframes fadeUp {
@@ -117,6 +171,30 @@ html {
 
 /* Spin for PDF loading */
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* Blinking cursor */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.blink-cursor {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+}
+
+/* Tilt card — preserve 3d for smooth perspective */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Reduced-motion: skip all animations */
+@media (prefers-reduced-motion: reduce) {
+  .blink-cursor { animation: none; opacity: 1; }
+  .fade-up { animation: none !important; opacity: 1 !important; }
+  .tilt-card { transform: none !important; transition: none !important; }
+  .marquee-track { animation-play-state: paused; }
+}
 
 /* ---- Print / PDF styles ---- */
 @media print {

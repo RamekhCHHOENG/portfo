@@ -14,13 +14,17 @@
           <a
             :href="link.href"
             :class="[
-              'text-sm transition-colors',
+              'relative text-sm transition-colors pb-0.5',
               activeSection === link.href.slice(1)
                 ? 'text-zinc-50'
                 : 'text-zinc-400 hover:text-zinc-200',
             ]"
           >
             {{ link.label }}
+            <span
+              v-if="activeSection === link.href.slice(1)"
+              class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-violet-400"
+            />
           </a>
         </li>
       </ul>
