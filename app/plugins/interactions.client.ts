@@ -67,8 +67,9 @@ export default defineNuxtPlugin(() => {
     document.addEventListener('mousemove', onMove)
   }
 
-  // ─── Scroll reveal ─────────────────────────────────────────────────────────
+  // ─── Scroll reveal (below-fold only) ────────────────────────────────────
   function initReveal() {
+    const vh = window.innerHeight
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return
@@ -82,7 +83,16 @@ export default defineNuxtPlugin(() => {
         obs.unobserve(el)
       })
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' })
-    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el))
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      const rect = el.getBoundingClientRect()
+      if (rect.top > vh - 20) {
+        // Below the fold — hide and watch
+        el.classList.add('scroll-wait')
+        obs.observe(el)
+      }
+      // In viewport — let the CSS animation play naturally
+    })
   }
 
   // ─── Orb parallax ─────────────────────────────────────────────────────────
@@ -109,9 +119,11 @@ export default defineNuxtPlugin(() => {
       attachTilt(el)
     })
     document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach(attachMagnetic)
-    initReveal()
-    initOrbParallax()
   }
 
-  window.addEventListener('load', () => requestAnimationFrame(() => setTimeout(init, 80)))
+  window.addEventListener('load', () => {
+    initReveal()       // immediately — no delay, prevents blank hero flash
+    initOrbParallax()  // immediately — mouse listener, no DOM dependency
+    requestAnimationFrame(() => setTimeout(init, 80))  // tilt/spotlight/magnetic
+  })
 })
