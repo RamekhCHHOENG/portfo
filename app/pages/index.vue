@@ -6,6 +6,7 @@
       <HeroSection />
       <TechMarquee />
       <AboutSection />
+      <ExperienceSection />
       <SkillsSection />
       <ProjectsSection />
       <ContactSection />

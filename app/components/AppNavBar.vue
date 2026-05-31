@@ -30,7 +30,15 @@
       </ul>
 
       <!-- Right side -->
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-3">
+        <!-- ⌘K hint -->
+        <button
+          class="no-print hidden lg:flex items-center gap-1 text-[11px] text-white/50 hover:text-white/80 transition-colors px-2 py-1 rounded-md border border-white/20 hover:border-white/35 font-mono"
+          @click="togglePalette"
+          aria-label="Open command palette"
+        >
+          <span>⌘</span><span>K</span>
+        </button>
         <button
           data-magnetic
           class="no-print hidden md:inline-flex items-center gap-1.5 text-sm px-4 py-1.5 bg-white/92 text-black rounded-full font-semibold hover:bg-white disabled:opacity-50 transition-colors shadow-sm"
@@ -99,11 +107,14 @@
 const { downloadPDF, isGenerating } = usePdfDownload()
 
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#about',      label: 'About' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#skills',     label: 'Skills' },
+  { href: '#projects',   label: 'Projects' },
+  { href: '#contact',    label: 'Contact' },
 ]
+
+const { toggle: togglePalette } = useCommandPalette()
 
 const menuOpen = ref(false)
 const activeSection = ref('')

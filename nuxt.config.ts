@@ -76,9 +76,18 @@ export default defineNuxtConfig({
       meta: [
         { name: 'description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
         { name: 'theme-color', content: '#6366f1' },
-        { property: 'og:title', content: 'Ramekh Chhoeng – Frontend Engineer Lead' },
-        { property: 'og:description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
-        { property: 'og:type', content: 'website' },
+        { property: 'og:title',       content: 'Ramekh Chhoeng – Frontend Engineer Lead' },
+        { property: 'og:description',  content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
+        { property: 'og:type',         content: 'website' },
+        { property: 'og:url',          content: 'https://ramekhchhoeng.online' },
+        { property: 'og:image',        content: 'https://ramekhchhoeng.online/ramekhchhoeng.jpg' },
+        { property: 'og:image:width',  content: '800' },
+        { property: 'og:image:height', content: '800' },
+        { name: 'twitter:card',        content: 'summary_large_image' },
+        { name: 'twitter:creator',     content: '@RamekhCHHOENG' },
+        { name: 'twitter:title',       content: 'Ramekh Chhoeng – Frontend Engineer Lead' },
+        { name: 'twitter:description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
+        { name: 'twitter:image',       content: 'https://ramekhchhoeng.online/ramekhchhoeng.jpg' },
       ],
       link: [
         // Manifest is handled by @vite-pwa/nuxt automatically

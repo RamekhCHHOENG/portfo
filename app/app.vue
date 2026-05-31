@@ -35,5 +35,6 @@
     <FilmGrain />
     <LoadingScreen />
     <ClientOnly><CustomCursor /></ClientOnly>
+    <ClientOnly><CommandPalette /></ClientOnly>
   </div>
 </template>
