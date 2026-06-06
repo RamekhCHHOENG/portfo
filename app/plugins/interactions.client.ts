@@ -1,6 +1,8 @@
 export default defineNuxtPlugin(() => {
   if (!import.meta.client) return
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   const tiltDone = new WeakSet<Element>()
   const magDone = new WeakSet<Element>()
 
@@ -97,6 +99,7 @@ export default defineNuxtPlugin(() => {
 
   // ─── Orb parallax ─────────────────────────────────────────────────────────
   function initOrbParallax() {
+    if (prefersReducedMotion) return
     const container = document.querySelector<HTMLElement>('.orb-container')
     if (!container) return
     let tx = 0, ty = 0, cx = 0, cy = 0
@@ -114,6 +117,7 @@ export default defineNuxtPlugin(() => {
 
   // ─── Scan & attach ────────────────────────────────────────────────────────
   function init() {
+    if (prefersReducedMotion) return
     document.querySelectorAll<HTMLElement>('.glass-card').forEach(el => {
       attachSpotlight(el)
       attachTilt(el)

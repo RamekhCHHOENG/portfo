@@ -11,14 +11,15 @@
 
 
       <!-- Tab toggle -->
-      <div class="flex gap-1 glass-sm rounded-xl p-1 w-fit mb-12 fade-up fade-up-1">
+      <div class="grid grid-cols-3 gap-1 glass-sm rounded-xl p-1 w-full sm:w-fit mb-12 fade-up fade-up-1">
         <button
           v-for="tab in tabs"
           :key="tab.id"
-          class="px-5 py-2 rounded-lg text-sm font-medium transition-all"
+          class="px-2.5 sm:px-5 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300"
+          :aria-pressed="activeTab === tab.id"
           :class="activeTab === tab.id
-            ? 'bg-white/12 text-white shadow-sm'
-            : 'text-white/40 hover:text-white/70'"
+            ? 'bg-white text-black shadow-sm'
+            : 'text-white/65 hover:text-white'"
           @click="activeTab = tab.id"
         >
           {{ tab.label }}
@@ -120,7 +121,7 @@
       </div>
 
       <!-- Timeline: Work -->
-      <div v-if="activeTab === 'work'" class="relative">
+      <div v-else-if="activeTab === 'work'" class="relative">
         <!-- Vertical connector line -->
         <div
           class="absolute left-[10px] top-3 bottom-6 w-px pointer-events-none"
@@ -165,28 +166,26 @@
                 <p class="text-sm font-medium text-cyan-300">
                   <span
                     v-if="job.maskedCompany"
-                    class="inline-block blur-[3px] select-none"
-                    aria-hidden="true"
+                    class="inline-block"
                   >
                     {{ job.company }}
                   </span>
-                  <span v-if="job.maskedCompany" class="sr-only">Company name temporarily hidden</span>
                   <span v-else>{{ job.company }}</span>
                 </p>
               </div>
               <div class="sm:text-right flex-shrink-0">
-                <p class="text-xs text-white/40 font-medium">{{ job.period }}</p>
-                <p class="text-[11px] text-white/25 mt-0.5">{{ job.location }}</p>
+                <p class="text-xs text-white/55 font-medium">{{ job.period }}</p>
+                <p class="text-[11px] text-white/40 mt-0.5">{{ job.location }}</p>
               </div>
             </div>
 
-            <p class="text-sm text-white/40 leading-relaxed mb-4">{{ job.description }}</p>
+            <p class="text-sm text-white/62 leading-relaxed mb-4">{{ job.description }}</p>
 
             <ul class="space-y-2 mb-5">
               <li
                 v-for="item in job.achievements"
                 :key="item"
-                class="flex items-start gap-2.5 text-sm text-white/60 leading-relaxed"
+                class="flex items-start gap-2.5 text-sm text-white/68 leading-relaxed"
               >
                 <span class="text-amber-400 text-xs mt-1 flex-shrink-0">▸</span>
                 {{ item }}
@@ -197,7 +196,7 @@
               <span
                 v-for="tech in job.stack"
                 :key="tech"
-                class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-white/5 text-white/45 border border-white/10"
+                class="px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-white/5 text-white/60 border border-white/10"
               >
                 {{ tech }}
               </span>
@@ -207,7 +206,7 @@
       </div>
 
       <!-- Timeline: Education -->
-      <div v-if="activeTab === 'education'" class="relative">
+      <div v-else-if="activeTab === 'education'" class="relative">
         <div
           class="absolute left-[10px] top-3 bottom-6 w-px pointer-events-none"
           style="background: linear-gradient(to bottom, rgba(245,196,81,0.58), rgba(255,255,255,0.07) 80%, transparent)"
@@ -229,12 +228,10 @@
                 <p class="text-sm font-medium text-cyan-300">
                   <span
                     v-if="edu.maskedSchool"
-                    class="inline-block blur-[3px] select-none"
-                    aria-hidden="true"
+                    class="inline-block"
                   >
                     {{ edu.school }}
                   </span>
-                  <span v-if="edu.maskedSchool" class="sr-only">School name temporarily hidden</span>
                   <span v-else>{{ edu.school }}</span>
                 </p>
               </div>
@@ -264,7 +261,7 @@ const activeTab = ref('overview')
 
 const tabs = [
   { id: 'overview',  label: 'Overview' },
-  { id: 'work',      label: 'Work Experience' },
+  { id: 'work',      label: 'Work' },
   { id: 'education', label: 'Education' },
 ]
 
@@ -328,7 +325,7 @@ const aiTools = [
 
 const jobs = [
   {
-    company: 'Company name',
+    company: 'Private company',
     maskedCompany: true,
     role: 'Frontend Developer',
     period: '2024 – Present',
@@ -344,7 +341,7 @@ const jobs = [
     stack: ['Nuxt', 'React.js', 'Node.js', 'TypeScript', 'REST APIs'],
   },
   {
-    company: 'Company name',
+    company: 'Private company',
     maskedCompany: true,
     role: 'Frontend Engineer',
     period: 'Dec 2022 – 2024',
@@ -361,7 +358,7 @@ const jobs = [
     stack: ['Vue.js', 'Nuxt', 'TypeScript', 'TailwindCSS', 'REST APIs'],
   },
   {
-    company: 'Company name',
+    company: 'Private company',
     maskedCompany: true,
     role: 'Software Developer',
     period: 'Jan 2020 – Dec 2022',
@@ -379,7 +376,7 @@ const jobs = [
     stack: ['Vue.js', 'JavaScript', 'REST APIs', 'CSS3'],
   },
   {
-    company: 'Company name',
+    company: 'Private company',
     maskedCompany: true,
     role: 'iOS Developer',
     period: 'Sep 2019 – Jan 2020',
@@ -398,7 +395,7 @@ const jobs = [
 
 const education = [
   {
-    school: 'School name',
+    school: 'Private school',
     maskedSchool: true,
     degree: 'Master Degree',
     period: '2026 – 2027',
@@ -406,7 +403,7 @@ const education = [
     color: 'gold',
   },
   {
-    school: 'School name',
+    school: 'Private school',
     maskedSchool: true,
     degree: 'Bachelor of Computer Science',
     period: 'Oct 2019 – Nov 2021',
@@ -414,7 +411,7 @@ const education = [
     color: 'cyan',
   },
   {
-    school: 'School name',
+    school: 'Private school',
     maskedSchool: true,
     degree: 'Associate Degree',
     period: 'Oct 2017 – Oct 2019',
@@ -422,7 +419,7 @@ const education = [
     color: 'emerald',
   },
   {
-    school: 'School name',
+    school: 'Private school',
     maskedSchool: true,
     degree: 'Baccalaureate II',
     period: 'Oct 2014 – Nov 2017',

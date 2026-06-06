@@ -1,8 +1,9 @@
 export function usePdfDownload() {
   const isGenerating = ref(false)
 
-  const resumeActionLabel = computed(() => 'View Resume')
-  const resumeViewLabel = computed(() => 'Download Resume')
+  const resumeActionLabel = computed(() => 'Download Resume')
+  const resumeViewLabel = computed(() => 'View Resume')
+  const resumePdfPath = '/Ramekh_Chhoeng_Resume.pdf'
 
   function scrollToCv() {
     if (!import.meta.client) return
@@ -18,7 +19,13 @@ export function usePdfDownload() {
 
   function downloadPDF() {
     if (import.meta.server || isGenerating.value) return
-    scrollToCv()
+
+    const link = document.createElement('a')
+    link.href = resumePdfPath
+    link.download = 'Ramekh_Chhoeng_Resume.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }
 
   function buildResumeHtml(profileSrc: string = '') {
@@ -464,19 +471,7 @@ export function usePdfDownload() {
 
     isGenerating.value = true
     try {
-      const imgPath = window.location.origin + '/ramekhchhoeng.jpg'
-      const profileBase64 = await getBase64FromImageUrl(imgPath)
-
-      const htmlContent = buildResumeHtml(profileBase64)
-      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' })
-      const url = URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = 'Ramekh_Chhoeng_Resume.html'
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      URL.revokeObjectURL(url)
+      window.open(resumePdfPath, '_blank', 'noopener,noreferrer')
     } catch (err) {
       console.error('Failed to view/download resume', err)
     } finally {

@@ -71,7 +71,7 @@
       </div>
 
       <!-- Rest of projects -->
-      <TransitionGroup tag="div" name="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div
             v-for="(project, i) in gridProjects"
           :key="project.title"
@@ -143,37 +143,16 @@
           </div>
         </div>
         </div>
-      </TransitionGroup>
+      </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.project-list-move,
-.project-list-enter-active,
-.project-list-leave-active {
-  transition: all 0.4s ease;
-}
-.project-list-enter-from,
-.project-list-leave-to {
-  opacity: 0;
-  transform: translateY(15px);
-}
-.project-list-leave-active {
-  position: absolute;
-}
-</style>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 
 const activeFilter = ref('All')
 const filters = ['All', 'Next.js', 'Vue.js', 'Kotlin', 'Python', 'Mobile']
-
-const filteredProjects = computed(() => {
-  if (activeFilter.value === 'All') return projects
-  return projects.filter(p => p.tech.some(t => t.includes(activeFilter.value)))
-})
 
 const gridProjects = computed(() => {
   if (activeFilter.value === 'All') return projects.filter(p => !p.featured)

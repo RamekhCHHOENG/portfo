@@ -17,7 +17,7 @@
           </h2>
           <p class="text-white/50 leading-relaxed mb-10">
             Open to new opportunities, collaborations, and interesting conversations.
-            Drop me a message via the form or connect on social.
+            Open an email draft with the form or connect directly through the links below.
           </p>
 
           <!-- Social links -->
@@ -120,12 +120,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-zinc-50 mb-2">Message sent!</h3>
-            <p class="text-sm text-zinc-400 mb-6">Thanks for reaching out. I'll get back to you as soon as possible.</p>
+            <h3 class="text-lg font-semibold text-zinc-50 mb-2">Email draft opened.</h3>
+            <p class="text-sm text-zinc-400 mb-6">Review and send it from your email app. You can also email me directly at ramekhchhoeng@icloud.com.</p>
             <button
               class="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
               @click="resetForm"
-            >Send another message</button>
+            >Open another draft</button>
           </div>
 
           <!-- Form -->
@@ -202,7 +202,7 @@
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
-              {{ submitting ? 'Sending…' : 'Send message' }}
+              {{ submitting ? 'Opening…' : 'Open email draft' }}
             </button>
           </form>
         </div>

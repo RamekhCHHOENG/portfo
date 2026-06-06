@@ -13,10 +13,17 @@ html {
     "Helvetica Neue", Arial, sans-serif;
   scroll-behavior: smooth;
   background: #0b0903;
+  overflow-x: hidden;
 }
 
 body {
   background: #0b0903;
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(245, 196, 81, 0.9);
+  outline-offset: 3px;
 }
 
 /* Scrollbar */
@@ -247,10 +254,13 @@ body {
 
 /* Reduced-motion: skip all animations */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .orb-container > *,
+  .gradient-shimmer { animation: none !important; }
   .blink-cursor { animation: none; opacity: 1; }
   .fade-up { animation: none !important; opacity: 1 !important; transform: none !important; }
   .tilt-card { transform: none !important; transition: none !important; }
-  .marquee-track { animation-play-state: paused; }
+  .marquee-track { animation: none !important; }
 }
 
 /* ---- Print / PDF styles ---- */
