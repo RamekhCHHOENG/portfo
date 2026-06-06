@@ -83,8 +83,8 @@ onUnmounted(() => {
 .cursor-ring.is-hovering {
   width: 46px;
   height: 46px;
-  border-color: rgba(139, 92, 246, 0.65);
-  background: rgba(139, 92, 246, 0.05);
+  border-color: rgba(245, 196, 81, 0.65);
+  background: rgba(245, 196, 81, 0.05);
 }
 
 @media (hover: none) {

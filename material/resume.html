@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ramekh Chhoeng - Resume</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 210mm;
+      height: 297mm;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #1f2933;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10.4px;
+      line-height: 1.42;
+    }
+
+    .page {
+      display: table;
+      width: 210mm;
+      height: 297mm;
+      table-layout: fixed;
+      background: #ffffff;
+    }
+
+    .sidebar,
+    .content {
+      display: table-cell;
+      vertical-align: top;
+    }
+
+    .sidebar {
+      width: 65mm;
+      padding: 10mm 7mm 10mm;
+      background: #111827;
+      color: #dbe4ef;
+    }
+
+    .content {
+      width: 145mm;
+      padding: 13mm 13mm 10mm;
+      background: #fbfcff;
+    }
+
+    .portrait-wrap {
+      width: 31mm;
+      height: 31mm;
+      margin: 0 auto 6mm;
+      padding: 1.2mm;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .portrait {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    h1 {
+      margin: 0;
+      color: #ffffff;
+      font-size: 25px;
+      line-height: 1.04;
+      letter-spacing: -0.6px;
+      text-align: center;
+    }
+
+    .title {
+      margin-top: 4px;
+      color: #60a5fa;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .availability {
+      margin: 5mm auto 6mm;
+      width: fit-content;
+      padding: 4px 8px;
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.09);
+      color: #86efac;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .sidebar-section {
+      margin-bottom: 5.5mm;
+    }
+
+    .side-title {
+      margin: 0 0 8px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .contact-line,
+    .side-item,
+    .language {
+      margin-bottom: 6px;
+      color: #cbd5e1;
+    }
+
+    .contact-label,
+    .side-label {
+      display: block;
+      color: #94a3b8;
+      font-size: 7.8px;
+      font-weight: 800;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+    }
+
+    .side-item strong,
+    .language strong {
+      color: #ffffff;
+    }
+
+    .strength {
+      margin-bottom: 7px;
+      padding: 6px 7px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .strength strong {
+      display: block;
+      margin-bottom: 2px;
+      color: #ffffff;
+      font-size: 9.4px;
+    }
+
+    .strength span {
+      color: #cbd5e1;
+      font-size: 8.8px;
+    }
+
+    .skill-chip {
+      display: inline-block;
+      margin: 0 3px 4px 0;
+      padding: 3px 6px;
+      border: 1px solid rgba(147, 197, 253, 0.35);
+      border-radius: 5px;
+      background: rgba(96, 165, 250, 0.12);
+      color: #e0f2fe;
+      font-size: 8.5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .skill-chip.ai {
+      border-color: rgba(52, 211, 153, 0.42);
+      background: rgba(52, 211, 153, 0.11);
+      color: #bbf7d0;
+    }
+
+    .main-header {
+      margin-bottom: 6mm;
+      padding: 6mm 8mm;
+      border: 1px solid #d8e2ef;
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .main-header h2 {
+      margin: 0 0 5px;
+      border: 0;
+      padding: 0;
+      color: #111827;
+      font-size: 18px;
+      line-height: 1.16;
+      letter-spacing: -0.3px;
+      text-transform: none;
+    }
+
+    .summary {
+      margin: 0;
+      color: #4b5563;
+      font-size: 10.6px;
+    }
+
+    .impact-row {
+      display: table;
+      width: 100%;
+      margin-top: 8px;
+      border-collapse: separate;
+      border-spacing: 5px 0;
+    }
+
+    .impact {
+      display: table-cell;
+      width: 33.333%;
+      padding: 6px 7px;
+      border: 1px solid #d8e2ef;
+      border-radius: 7px;
+      background: #f8fbff;
+    }
+
+    .impact strong {
+      display: block;
+      color: #0b72e7;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .impact span {
+      color: #64748b;
+      font-size: 7.8px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    section {
+      margin-bottom: 6mm;
+    }
+
+    h2 {
+      margin: 0 0 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid #d8e2ef;
+      color: #111827;
+      font-size: 9.4px;
+      font-weight: 900;
+      letter-spacing: 1.4px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-left: 5mm;
+      padding: 0 0 4mm 6mm;
+      border-left: 1px solid #bfdbfe;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-item:before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: 0;
+      width: 1px;
+      height: 13mm;
+      background: #0b72e7;
+    }
+
+    .dot {
+      position: absolute;
+      left: -2.55mm;
+      top: 1mm;
+      width: 4.8mm;
+      height: 4.8mm;
+      border: 1.1mm solid #dbeafe;
+      border-radius: 50%;
+      background: #0b72e7;
+      box-shadow: 0 0 0 1px #93c5fd, 0 6px 14px rgba(11, 114, 231, 0.22);
+      z-index: 1;
+    }
+
+    .timeline-body {
+      padding: 6px 8px;
+      border: 1px solid #d8e2ef;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.035);
+    }
+
+    h3 {
+      margin: 0;
+      color: #111827;
+      font-size: 12.2px;
+      line-height: 1.18;
+    }
+
+    .meta {
+      margin: 2px 0 4px;
+      color: #0b72e7;
+      font-size: 9.5px;
+      font-weight: 800;
+    }
+
+    .meta span {
+      color: #64748b;
+    }
+
+    .date-pill {
+      display: inline-block;
+      margin-left: 3px;
+      padding: 1px 5px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #35618f;
+      font-size: 8px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 13px;
+    }
+
+    li {
+      margin-bottom: 2px;
+      color: #334155;
+    }
+
+    .education-item {
+      padding-bottom: 3.2mm;
+    }
+
+    .education-body {
+      color: #475569;
+    }
+
+    .education-body h3 {
+      font-size: 10.8px;
+    }
+
+    .education-body span {
+      color: #64748b;
+    }
+
+    .year {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: #0b72e7;
+      font-size: 8.2px;
+      font-weight: 800;
+    }
+
+    .redacted {
+      display: inline-block;
+      color: #0b72e7;
+      filter: blur(2px);
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <aside class="sidebar">
+      <div class="portrait-wrap">
+        <img class="portrait" src="../public/ramekhchhoeng.jpg" alt="Ramekh Chhoeng">
+      </div>
+
+      <h1>Ramekh<br>Chhoeng</h1>
+      <div class="title">Frontend Engineer</div>
+      <div class="availability">Open to frontend roles</div>
+
+      <div class="sidebar-section">
+        <h2 class="side-title">Contact</h2>
+        <div class="contact-line"><span class="contact-label">Location</span>Phnom Penh, Cambodia</div>
+        <div class="contact-line"><span class="contact-label">Phone</span>+855 97 818 818 3</div>
+        <div class="contact-line"><span class="contact-label">Email</span>ramekhchhoeng@icloud.com</div>
+        <div class="contact-line"><span class="contact-label">Site</span>ramekhchhoeng.com</div>
+        <div class="contact-line"><span class="contact-label">GitHub</span>github.com/RamekhCHHOENG</div>
+        <div class="contact-line"><span class="contact-label">LinkedIn</span>linkedin.com/in/ramekhchhoeng</div>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="side-title">Core Stack</h2>
+        <span class="skill-chip">Vue.js</span>
+        <span class="skill-chip">Nuxt</span>
+        <span class="skill-chip">TypeScript</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">TailwindCSS</span>
+        <span class="skill-chip">Vuetify</span>
+        <span class="skill-chip">REST APIs</span>
+        <span class="skill-chip">Swift</span>
+        <span class="skill-chip">Git</span>
+        <span class="skill-chip ai">Claude</span>
+        <span class="skill-chip ai">GPT</span>
+        <span class="skill-chip ai">Gemini</span>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="side-title">Strengths</h2>
+        <div class="strength">
+          <strong>Architecture</strong>
+          <span>Project foundations, reusable UI systems, maintainable structure.</span>
+        </div>
+        <div class="strength">
+          <strong>Delivery</strong>
+          <span>Business requirements, API integration, debugging, maintenance.</span>
+        </div>
+        <div class="strength">
+          <strong>UI Quality</strong>
+          <span>Responsive screens, consistent components, polished interaction states.</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h2 class="side-title">Languages</h2>
+        <div class="language"><strong>Khmer</strong><br>Native</div>
+        <div class="language"><strong>English</strong><br>Working proficiency</div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="main-header">
+        <h2>Building reliable Vue/Nuxt products with polished UI systems.</h2>
+        <p class="summary">
+          Frontend Engineer with 4.5+ years of experience across enterprise, education,
+          government, and product environments. Strong in frontend architecture, reusable
+          component systems, REST API integration, AI-assisted delivery, debugging, and production
+          maintenance.
+        </p>
+        <div class="impact-row">
+          <div class="impact"><strong>4.5+</strong><span>Years experience</span></div>
+          <div class="impact"><strong>3</strong><span>Vue projects shipped</span></div>
+          <div class="impact"><strong>Frontend</strong><span>Current role</span></div>
+        </div>
+      </div>
+
+      <section>
+        <h2>Education</h2>
+        <article class="timeline-item education-item">
+          <div class="dot"></div>
+          <div class="timeline-body education-body">
+            <h3>Master Degree</h3>
+            <span class="redacted">School name</span><br>
+            <span class="year">2026 - 2027</span>
+          </div>
+        </article>
+        <article class="timeline-item education-item">
+          <div class="dot"></div>
+          <div class="timeline-body education-body">
+            <h3>Bachelor of Computer Science</h3>
+            <span class="redacted">School name</span><br>
+            <span class="year">2019 - 2021</span>
+          </div>
+        </article>
+        <article class="timeline-item education-item">
+          <div class="dot"></div>
+          <div class="timeline-body education-body">
+            <h3>Associate Degree</h3>
+            <span class="redacted">School name</span><br>
+            <span class="year">2017 - 2019</span>
+          </div>
+        </article>
+        <article class="timeline-item education-item">
+          <div class="dot"></div>
+          <div class="timeline-body education-body">
+            <h3>Baccalaureate II</h3>
+            <span class="redacted">School name</span><br>
+            <span class="year">2014 - 2017</span>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <h2>Work Experience</h2>
+
+        <article class="timeline-item">
+          <div class="dot"></div>
+          <div class="timeline-body">
+            <h3>Frontend Developer</h3>
+            <div class="meta"><span class="redacted">Company name</span> <span class="date-pill">2024 - Present</span></div>
+            <ul>
+              <li>Build production interfaces with Nuxt and React.js.</li>
+              <li>Integrate frontend features with Node.js services and APIs.</li>
+              <li>Maintain reusable UI patterns and application performance.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="dot"></div>
+          <div class="timeline-body">
+            <h3>Frontend Engineer / Software Developer</h3>
+            <div class="meta"><span class="redacted">Company name</span> <span class="date-pill">Dec 2022 - 2024</span></div>
+            <ul>
+              <li>Lead frontend architecture for production Vue.js and Nuxt applications, including project structure, reusable modules, and component conventions.</li>
+              <li>Built and launched API-connected web applications with responsive screens, maintainable UI patterns, and reliable production behavior.</li>
+              <li>Use Claude, GPT, and Gemini to accelerate prototyping, debugging, code review, and documentation while keeping final implementation quality controlled.</li>
+              <li>Improve product stability through bug triage, refactoring, maintenance, and performance-focused implementation.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="dot"></div>
+          <div class="timeline-body">
+            <h3>Software Developer</h3>
+            <div class="meta"><span class="redacted">Company name</span> <span class="date-pill">Jan 2020 - Dec 2022</span></div>
+            <ul>
+              <li>Contributed to 3 production Vue.js projects for enterprise, university, and government use cases.</li>
+              <li>Implemented frontend features from business requirements and integrated them with backend services and REST APIs.</li>
+              <li>Built reusable custom components aligned with project design systems and delivery needs.</li>
+              <li>Resolved complex UI and application bugs while maintaining internal tools and customer-facing products.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="dot"></div>
+          <div class="timeline-body">
+            <h3>iOS Developer</h3>
+            <div class="meta"><span class="redacted">Company name</span> <span class="date-pill">Sep 2019 - Jan 2020</span></div>
+            <ul>
+              <li>Developed Swift application features using programmatic UIKit based on product requirements.</li>
+              <li>Supported bug fixing, maintenance, testing, and iterative product refinement.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>

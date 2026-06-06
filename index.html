@@ -88,16 +88,6 @@
       <h2 class="section-title fade-in">About Me</h2>
       <div class="about-grid fade-in">
         <div class="about-card">
-          <div class="about-icon">🎓</div>
-          <h3>Education</h3>
-          <p>Computer Science graduate with a focus on software engineering, systems design, and distributed computing.</p>
-        </div>
-        <div class="about-card">
-          <div class="about-icon">💻</div>
-          <h3>Experience</h3>
-          <p>Built 25+ production applications spanning web, mobile, microservices, DevOps tooling, and AI agents.</p>
-        </div>
-        <div class="about-card">
           <div class="about-icon">🌏</div>
           <h3>Location</h3>
           <p>Based in Cambodia. Deployed services at <em>ramekhchhoeng.com</em> using Coolify on self-hosted infrastructure.</p>
@@ -108,6 +98,162 @@
           <p>Clean architecture, developer experience, AI/ML applications, and contributing to open-source ecosystems.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERIENCE & EDUCATION (TABS) ========== -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Experience & Education</h2>
+
+      <!-- Tab Buttons -->
+      <div class="tab-bar fade-in" role="tablist" aria-label="Experience and Education tabs">
+        <button class="tab-btn active" id="tab-experience" role="tab" aria-selected="true" aria-controls="panel-experience" data-tab="experience">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>
+          Experience
+        </button>
+        <button class="tab-btn" id="tab-education" role="tab" aria-selected="false" aria-controls="panel-education" data-tab="education">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5z"/>
+            <path d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032z"/>
+          </svg>
+          Education
+        </button>
+      </div>
+
+      <!-- Experience Panel -->
+      <div class="tab-panel active" id="panel-experience" role="tabpanel" aria-labelledby="tab-experience">
+        <div class="timeline">
+
+          <div class="timeline-item fade-in">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">Full-Stack Developer</h3>
+                  <p class="timeline-company">Freelance & Open Source</p>
+                </div>
+                <span class="timeline-date">2023 – Present</span>
+              </div>
+              <p class="timeline-desc">
+                Built 25+ production applications spanning web, mobile, microservices, DevOps tooling, and AI agents. 
+                Architected scalable systems using TypeScript, Python, NestJS, and Next.js with PostgreSQL and Redis.
+              </p>
+              <div class="timeline-tags">
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">NestJS</span>
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">Docker</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-in delay-1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">Backend Engineer</h3>
+                  <p class="timeline-company">Self-Hosted Infrastructure</p>
+                </div>
+                <span class="timeline-date">2022 – 2023</span>
+              </div>
+              <p class="timeline-desc">
+                Designed and deployed microservices on self-hosted servers using Coolify, Docker, and CI/CD pipelines. 
+                Managed PostgreSQL, Redis, RabbitMQ, and MinIO (S3) for production workloads.
+              </p>
+              <div class="timeline-tags">
+                <span class="tech-tag">Coolify</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">RabbitMQ</span>
+                <span class="tech-tag">GitHub Actions</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-in delay-2">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">Mobile App Developer</h3>
+                  <p class="timeline-company">Cross-Platform Projects</p>
+                </div>
+                <span class="timeline-date">2021 – 2022</span>
+              </div>
+              <p class="timeline-desc">
+                Developed cross-platform mobile applications using React Native and Expo. 
+                Delivered end-to-end solutions including REST API integration, state management with Zustand, and offline-first architecture.
+              </p>
+              <div class="timeline-tags">
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Expo</span>
+                <span class="tech-tag">Zustand</span>
+                <span class="tech-tag">REST APIs</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Education Panel -->
+      <div class="tab-panel" id="panel-education" role="tabpanel" aria-labelledby="tab-education">
+        <div class="timeline">
+
+          <div class="timeline-item fade-in">
+            <div class="timeline-dot dot-education"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">Bachelor of Computer Science</h3>
+                  <p class="timeline-company">University — Cambodia</p>
+                </div>
+                <span class="timeline-date">2019 – 2023</span>
+              </div>
+              <p class="timeline-desc">
+                Focused on software engineering, systems design, and distributed computing. 
+                Coursework included algorithms, database systems, operating systems, and computer networks.
+              </p>
+              <div class="timeline-tags">
+                <span class="tech-tag">Algorithms</span>
+                <span class="tech-tag">Data Structures</span>
+                <span class="tech-tag">Distributed Systems</span>
+                <span class="tech-tag">Software Engineering</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-in delay-1">
+            <div class="timeline-dot dot-education"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-title">Self-Taught & Online Courses</h3>
+                  <p class="timeline-company">Continuous Learning</p>
+                </div>
+                <span class="timeline-date">2020 – Present</span>
+              </div>
+              <p class="timeline-desc">
+                Continuously expanding skills through online platforms, open-source contributions, and hands-on project building. 
+                Specialized in modern web frameworks, cloud infrastructure, and AI/ML tools.
+              </p>
+              <div class="timeline-tags">
+                <span class="tech-tag">Full-Stack Development</span>
+                <span class="tech-tag">Cloud & DevOps</span>
+                <span class="tech-tag">AI / ML</span>
+                <span class="tech-tag">Open Source</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 

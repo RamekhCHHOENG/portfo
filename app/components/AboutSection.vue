@@ -8,7 +8,7 @@
         <!-- Bio card -->
         <div class="glass-card rounded-2xl p-8 bento-bio sm:col-span-2 flex flex-col justify-between min-h-[220px]">
           <div>
-            <p class="text-xs text-violet-400 uppercase tracking-widest font-medium mb-4">About</p>
+            <p class="text-xs text-amber-400 uppercase tracking-widest font-medium mb-4">About</p>
             <h2 class="text-2xl lg:text-3xl font-bold tracking-tight text-zinc-50 mb-4 leading-tight">
               Developer with a passion for<br class="hidden sm:block">
               crafting great products.
@@ -35,7 +35,7 @@
           />
           <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent p-5">
             <p class="text-sm font-bold text-white leading-tight">Ramekh Chhoeng</p>
-            <p class="text-xs text-white/55">Frontend Engineer Lead</p>
+            <p class="text-xs text-white/55">Frontend Engineer</p>
           </div>
         </div>
 
@@ -51,7 +51,7 @@
           </p>
           <a
             href="#contact"
-            class="inline-flex items-center gap-1.5 text-xs text-violet-400 hover:text-violet-300 transition-colors group mt-2"
+            class="inline-flex items-center gap-1.5 text-xs text-amber-400 hover:text-amber-300 transition-colors group mt-2"
           >
             Get in touch
             <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -67,11 +67,11 @@
           <p class="text-xs text-white/45 mt-0.5 mb-auto">Cambodia · UTC+7</p>
           <div class="flex flex-col gap-1.5 mt-4 pt-3 border-t border-white/5">
             <a
-              href="https://ramekhchhoeng.online"
+              href="https://ramekhchhoeng.com"
               target="_blank"
               rel="noopener"
               class="text-xs text-white/40 hover:text-white/70 transition-colors"
-            >🌐 ramekhchhoeng.online</a>
+            >🌐 ramekhchhoeng.com</a>
             <a
               href="mailto:ramekhchhoeng@icloud.com"
               class="text-xs text-white/40 hover:text-white/70 transition-colors"
@@ -81,45 +81,23 @@
 
       </div>
 
-      <!-- Experience timeline + Stats -->
+      <!-- Profile focus + Stats -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
 
-        <!-- Experience -->
+        <!-- Focus areas -->
         <div class="fade-up fade-up-1">
-          <h3 class="text-xs font-medium text-white/35 uppercase tracking-widest mb-6">Experience</h3>
-          <div class="space-y-0">
+          <h3 class="text-xs font-medium text-white/35 uppercase tracking-widest mb-6">Current focus</h3>
+          <div class="grid gap-3">
             <div
-              v-for="(exp, i) in experience"
-              :key="exp.title"
-              class="flex gap-4"
+              v-for="item in focusAreas"
+              :key="item.title"
+              class="glass-card rounded-xl p-5"
             >
-              <div class="flex flex-col items-center">
-                <div class="w-2 h-2 rounded-full bg-violet-400 mt-1.5 flex-shrink-0" />
-                <div v-if="i < experience.length - 1" class="w-px flex-1 bg-white/10 mt-2" />
-              </div>
-              <div class="pb-8">
-                <div class="flex items-baseline gap-2 mb-1">
-                  <span class="text-sm font-semibold text-white/90">{{ exp.title }}</span>
-                  <span class="text-white/30 text-xs">·</span>
-                  <span class="text-xs text-white/45">{{ exp.company }}</span>
-                </div>
-                <span class="text-xs text-white/28 block mb-3">{{ exp.date }}</span>
-                <ul class="space-y-1.5 mb-3">
-                  <li
-                    v-for="point in exp.points"
-                    :key="point"
-                    class="flex gap-2 text-xs text-white/50 leading-relaxed"
-                  >
-                    <span class="text-violet-400 flex-shrink-0 mt-0.5">▪</span>
-                    <span>{{ point }}</span>
-                  </li>
-                </ul>
-                <div class="flex flex-wrap gap-1.5">
-                  <span
-                    v-for="tag in exp.tags"
-                    :key="tag"
-                    class="text-[10px] px-2 py-0.5 rounded-full glass-sm text-white/50"
-                  >{{ tag }}</span>
+              <div class="flex items-start gap-4">
+                <span class="text-xl leading-none mt-0.5">{{ item.emoji }}</span>
+                <div>
+                  <p class="text-sm font-semibold text-white/90 mb-1">{{ item.title }}</p>
+                  <p class="text-xs text-white/45 leading-relaxed">{{ item.desc }}</p>
                 </div>
               </div>
             </div>
@@ -148,7 +126,7 @@
         <h3 class="text-xs font-medium text-white/35 uppercase tracking-widest mb-8">How I work</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <div v-for="val in values" :key="val.title" class="group glass-card rounded-xl p-5">
-            <p class="text-sm font-semibold text-white/90 mb-2 group-hover:text-violet-300 transition-colors">{{ val.title }}</p>
+            <p class="text-sm font-semibold text-white/90 mb-2 group-hover:text-amber-300 transition-colors">{{ val.title }}</p>
             <p class="text-xs text-white/45 leading-relaxed">{{ val.desc }}</p>
           </div>
         </div>
@@ -159,41 +137,21 @@
 </template>
 
 <script setup lang="ts">
-const experience = [
+const focusAreas = [
   {
-    title: 'Software Developer (Frontend Lead)',
-    company: 'IDEALINK CONSULTING LTD',
-    date: 'Dec 2022 – Present',
-    points: [
-      'Established the core project infrastructure from the ground up for major enterprise initiatives.',
-      'Successfully built and launched a suite of web applications using Vue.js and modern frontend tooling.',
-      'Contributed to the design of web application user interfaces, ensuring high usability and aesthetic appeal.',
-      'Led bug fixing and maintenance tasks, optimizing web functionality and performance across production apps.',
-    ],
-    tags: ['Vue.js', 'TypeScript', 'Project Lead', 'Infrastructure'],
+    emoji: '⚙️',
+    title: 'Frontend architecture',
+    desc: 'Designing Vue/Nuxt foundations, reusable UI systems, and maintainable project structure for production teams.',
   },
   {
-    title: 'Software Developer',
-    company: 'Soramitsu Khmer Co., Ltd',
-    date: 'Jan 2020 – Dec 2022',
-    points: [
-      'Contributed to and completed 3 major projects utilizing Vue.js for enterprise and government solutions.',
-      'Collaborated with cross-functional teams to implement front-end features based on complex business requirements.',
-      'Developed and maintained custom component libraries to ensure consistency across multiple project surfaces.',
-      'Addressed and resolved complex architectural bugs to ensure smooth system functionality.',
-    ],
-    tags: ['Vue.js', 'Enterprise Solutions', 'Component Library', 'Collaboration'],
+    emoji: '🧩',
+    title: 'Product implementation',
+    desc: 'Turning business requirements into polished interfaces with typed contracts, API integration, and pragmatic delivery.',
   },
   {
-    title: 'iOS Developer (Internship)',
-    company: 'Self-Directed / Startup Project',
-    date: 'Sep 2019 – Jan 2020',
-    points: [
-      'Played a key role in developing a product using Swift (Programmatically) based on specific business needs.',
-      'Participated in end-to-end product development, from initial feature implementation to bug fixing and maintenance.',
-      'Ensured continuous functionality and quality through rigorous testing and iterative updates.',
-    ],
-    tags: ['Swift', 'iOS Development', 'Programmatic UI'],
+    emoji: '🚀',
+    title: 'Quality and performance',
+    desc: 'Improving reliability through bug fixing, UI refinement, maintainable code paths, and performance-minded reviews.',
   },
 ]
 
@@ -201,11 +159,11 @@ const cards = [
   {
     emoji: '🎓',
     title: 'Education',
-    desc: 'Bachelor of Computer Science from University of Puthisastra (UP).',
+    desc: 'Master degree track plus Bachelor of Computer Science.',
   },
   {
     emoji: '💻',
-    title: 'Experience',
+    title: 'Current Role',
     desc: '4.5+ years as a Frontend Developer & Lead across enterprise and product teams.',
   },
   {

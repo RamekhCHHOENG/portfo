@@ -10,11 +10,11 @@
       <div class="flex flex-col items-center gap-4 mb-10 fade-up">
         <div class="relative">
           <div class="absolute inset-0 rounded-full scale-150 blur-2xl opacity-50"
-               style="background: radial-gradient(circle, rgba(139,92,246,0.7) 0%, transparent 70%);" />
+               style="background: radial-gradient(circle, rgba(245,196,81,0.65) 0%, transparent 70%);" />
           <img
             src="/ramekhchhoeng.jpg"
             alt="Ramekhchhoeng"
-            class="relative w-16 h-16 rounded-full object-cover shadow-[0_0_0_2px_rgba(139,92,246,0.5),0_0_0_5px_rgba(139,92,246,0.12),0_8px_32px_rgba(0,0,0,0.6)]"
+            class="relative w-16 h-16 rounded-full object-cover shadow-[0_0_0_2px_rgba(245,196,81,0.5),0_0_0_5px_rgba(245,196,81,0.12),0_8px_32px_rgba(0,0,0,0.6)]"
           />
         </div>
         <div class="glass-sm inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs text-white/60">
@@ -34,11 +34,11 @@
       <!-- Subtitle with typewriter -->
       <p
         class="text-base sm:text-lg text-white/55 max-w-2xl mx-auto leading-relaxed mb-10 fade-up fade-up-2"
-        aria-label="I'm Ramekh Chhoeng — a Frontend Engineer Lead & Full-Stack Developer based in Phnom Penh with over 4.5 years of experience."
+        aria-label="I'm Ramekh Chhoeng — a Frontend Engineer & Full-Stack Developer based in Phnom Penh with over 4.5 years of experience."
       >
         I'm <span class="text-white/90 font-medium">Ramekh Chhoeng</span> — a
         <span aria-hidden="true" class="inline-flex items-baseline gap-px">
-          <span class="text-white/90 font-medium">{{ displayed }}</span><span class="blink-cursor text-violet-400">|</span>
+          <span class="text-white/90 font-medium">{{ displayed }}</span><span class="blink-cursor text-amber-400">|</span>
         </span>
         based in Phnom Penh with over 4.5 years of experience.
       </p>
@@ -68,7 +68,7 @@
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
           </svg>
-          {{ isGenerating ? 'Generating…' : 'Download Resume' }}
+          {{ isGenerating ? 'Generating…' : resumeActionLabel }}
         </button>
         <button
           data-magnetic
@@ -79,7 +79,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
           </svg>
-          View Resume
+          {{ resumeViewLabel }}
         </button>
       </div>
 
@@ -122,10 +122,10 @@
 </template>
 
 <script setup lang="ts">
-const { downloadPDF, viewResume, isGenerating } = usePdfDownload()
+const { downloadPDF, viewResume, isGenerating, resumeActionLabel, resumeViewLabel } = usePdfDownload()
 
 const { displayed } = useTypewriter([
-  'Frontend Engineer Lead',
+  'Frontend Engineer',
   'Full-Stack Developer',
   'Mobile App Builder',
   'Open Source Contributor',

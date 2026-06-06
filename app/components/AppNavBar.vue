@@ -23,7 +23,7 @@
             {{ link.label }}
             <span
               v-if="activeSection === link.href.slice(1)"
-              class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-violet-400"
+              class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400"
             />
           </a>
         </li>
@@ -45,7 +45,7 @@
           :disabled="isGenerating"
           @click="downloadPDF"
         >
-          {{ isGenerating ? 'Generating…' : 'Resume' }}
+          {{ isGenerating ? 'Generating…' : resumeActionLabel }}
         </button>
 
         <!-- Mobile hamburger -->
@@ -94,7 +94,7 @@
               :disabled="isGenerating"
               @click="downloadPDF(); menuOpen = false"
             >
-              {{ isGenerating ? 'Generating…' : 'Download Resume' }}
+              {{ isGenerating ? 'Generating…' : resumeActionLabel }}
             </button>
           </li>
         </ul>
@@ -104,7 +104,7 @@
 </template>
 
 <script setup lang="ts">
-const { downloadPDF, isGenerating } = usePdfDownload()
+const { downloadPDF, isGenerating, resumeActionLabel } = usePdfDownload()
 
 const navLinks = [
   { href: '#about',      label: 'About' },

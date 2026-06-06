@@ -2,7 +2,7 @@
   <section id="skills" class="pt-16 pb-32 px-6 glass-divider">
     <div class="max-w-6xl mx-auto">
       <div class="mb-16 fade-up">
-        <p class="text-xs text-violet-400 uppercase tracking-widest font-medium mb-3">Stack</p>
+        <p class="text-xs text-amber-400 uppercase tracking-widest font-medium mb-3">Stack</p>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">
           Tools of the trade.
         </h2>
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Mobile -->
-        <div class="md:col-span-2 glass-card rounded-2xl p-6 fade-up fade-up-2 border-l-2 border-purple-400/40">
+        <div class="md:col-span-2 glass-card rounded-2xl p-6 fade-up fade-up-2 border-l-2 border-amber-400/40">
           <div class="flex items-center gap-3 mb-5">
             <span class="text-2xl">📱</span>
             <div>
@@ -123,7 +123,7 @@ const bentoGroups: Record<string, Skill[]> = {
     { name: 'React Native', color: 'border-cyan-400/40 text-cyan-300 bg-cyan-400/5' },
     { name: 'Expo', color: 'border-white/30 text-white/80 bg-white/5' },
     { name: 'Swift', color: 'border-orange-400/40 text-orange-300 bg-orange-400/5' },
-    { name: 'Kotlin', color: 'border-purple-400/40 text-purple-300 bg-purple-400/5' },
+    { name: 'Kotlin', color: 'border-amber-400/40 text-amber-300 bg-amber-400/5' },
   ],
   backend: [
     { name: 'Python', color: 'border-yellow-400/40 text-yellow-300 bg-yellow-400/5' },
@@ -148,11 +148,11 @@ const bentoGroups: Record<string, Skill[]> = {
     { name: 'Git', color: 'border-orange-400/40 text-orange-300 bg-orange-400/5' },
     { name: 'GitHub Actions', color: 'border-white/30 text-white/80 bg-white/5' },
     { name: 'Docker Compose', color: 'border-blue-400/40 text-blue-400 bg-blue-400/5' },
-    { name: 'Figma', color: 'border-purple-400/40 text-purple-300 bg-purple-400/5' },
+    { name: 'Figma', color: 'border-amber-400/40 text-amber-300 bg-amber-400/5' },
     { name: 'Jira', color: 'border-blue-400/40 text-blue-300 bg-blue-400/5' },
     { name: 'Linux', color: 'border-yellow-400/40 text-yellow-300 bg-yellow-400/5' },
     { name: 'VS Code', color: 'border-blue-400/30 text-blue-300 bg-blue-400/5' },
-    { name: 'Coolify', color: 'border-violet-400/40 text-violet-300 bg-violet-400/5' },
+    { name: 'Coolify', color: 'border-amber-400/40 text-amber-300 bg-amber-400/5' },
     { name: 'Postman', color: 'border-orange-400/40 text-orange-300 bg-orange-400/5' },
   ],
 }

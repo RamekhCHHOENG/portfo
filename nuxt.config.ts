@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       name: 'Ramekhchhoeng – Portfolio',
       short_name: 'RC Portfolio',
       description: 'Personal portfolio of Ramekhchhoeng, a Full-Stack Developer.',
-      theme_color: '#6366f1',
+      theme_color: '#d6a72d',
       background_color: '#09090b',
       display: 'standalone',
       start_url: '/',
@@ -72,22 +72,22 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'Ramekh Chhoeng – Frontend Engineer Lead',
+      title: 'Ramekh Chhoeng – Frontend Engineer',
       meta: [
-        { name: 'description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
-        { name: 'theme-color', content: '#6366f1' },
-        { property: 'og:title',       content: 'Ramekh Chhoeng – Frontend Engineer Lead' },
-        { property: 'og:description',  content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
+        { name: 'description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
+        { name: 'theme-color', content: '#d6a72d' },
+        { property: 'og:title',       content: 'Ramekh Chhoeng – Frontend Engineer' },
+        { property: 'og:description',  content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
         { property: 'og:type',         content: 'website' },
-        { property: 'og:url',          content: 'https://ramekhchhoeng.online' },
-        { property: 'og:image',        content: 'https://ramekhchhoeng.online/ramekhchhoeng.jpg' },
+        { property: 'og:url',          content: 'https://ramekhchhoeng.com' },
+        { property: 'og:image',        content: 'https://ramekhchhoeng.com/ramekhchhoeng.jpg' },
         { property: 'og:image:width',  content: '800' },
         { property: 'og:image:height', content: '800' },
         { name: 'twitter:card',        content: 'summary_large_image' },
         { name: 'twitter:creator',     content: '@RamekhCHHOENG' },
-        { name: 'twitter:title',       content: 'Ramekh Chhoeng – Frontend Engineer Lead' },
-        { name: 'twitter:description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer Lead specializing in Vue.js, TypeScript, and Mobile Development.' },
-        { name: 'twitter:image',       content: 'https://ramekhchhoeng.online/ramekhchhoeng.jpg' },
+        { name: 'twitter:title',       content: 'Ramekh Chhoeng – Frontend Engineer' },
+        { name: 'twitter:description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
+        { name: 'twitter:image',       content: 'https://ramekhchhoeng.com/ramekhchhoeng.jpg' },
       ],
       link: [
         // Manifest is handled by @vite-pwa/nuxt automatically
@@ -103,7 +103,7 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: ['html2pdf.js', 'workbox-window'],
+      include: ['workbox-window'],
     },
   },
 })

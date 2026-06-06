@@ -79,7 +79,7 @@ onUnmounted(() => {
   backdrop-filter: blur(16px) brightness(3.5) saturate(110%);
   -webkit-backdrop-filter: blur(16px) brightness(3.5) saturate(110%);
 
-  /* Strong white frost: without this, brightness on #07001a is still very dark */
+  /* Strong white frost: without this, brightness on the dark gold base is still very dark */
   background: linear-gradient(
     145deg,
     rgba(255, 255, 255, 0.44) 0%,
@@ -114,14 +114,14 @@ onUnmounted(() => {
   );
 }
 
-/* Subtle violet depth tint in the lower-left interior */
+/* Subtle gold depth tint in the lower-left interior */
 .glass-cursor-inner {
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(
     ellipse 55% 45% at 28% 85%,
-    rgba(139, 92, 246, 0.14) 0%,
+    rgba(245, 196, 81, 0.14) 0%,
     transparent 65%
   );
 }

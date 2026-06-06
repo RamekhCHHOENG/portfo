@@ -106,7 +106,7 @@ interface Group {
 }
 
 const { isOpen, close } = useCommandPalette()
-const { downloadPDF, viewResume } = usePdfDownload()
+const { downloadPDF, viewResume, resumeActionLabel, resumeViewLabel } = usePdfDownload()
 
 const query = ref('')
 const activeId = ref('')
@@ -140,7 +140,7 @@ function openLink(url: string) {
   window.open(url, '_blank', 'noopener,noreferrer')
 }
 
-const groups: Group[] = [
+const groups = computed<Group[]>(() => [
   {
     label: 'Navigate',
     items: [
@@ -149,16 +149,17 @@ const groups: Group[] = [
       { id: 'nav-experience', label: 'Experience', icon: iconBriefcase, action: () => scrollTo('experience') },
       { id: 'nav-skills',     label: 'Skills',     icon: iconWrench,    action: () => scrollTo('skills') },
       { id: 'nav-projects',   label: 'Projects',   icon: iconFolder,    action: () => scrollTo('projects') },
+      { id: 'nav-resume',     label: 'Resume',     icon: iconClipboard, action: () => scrollTo('experience') },
       { id: 'nav-contact',    label: 'Contact',    icon: iconMail,      action: () => scrollTo('contact') },
     ],
   },
   {
     label: 'Actions',
     items: [
-      { id: 'act-resume', label: 'Download Resume', icon: iconDownload,  shortcut: '⌘R', action: () => downloadPDF() },
-      { id: 'act-view',   label: 'View Resume',     icon: iconEye,                       action: () => viewResume() },
-      { id: 'act-copy',   label: 'Copy Email',      icon: iconClipboard, shortcut: '⌘E', action: copyEmail },
-      { id: 'act-code',   label: 'View Source Code',icon: iconCode,                       action: () => openLink('https://github.com/RamekhCHHOENG/portfo') },
+      { id: 'act-resume', label: resumeActionLabel.value, icon: iconDownload,  shortcut: '⌘R', action: () => downloadPDF() },
+      { id: 'act-view',   label: resumeViewLabel.value,   icon: iconEye,                       action: () => viewResume() },
+      { id: 'act-copy',   label: 'Copy Email',            icon: iconClipboard, shortcut: '⌘E', action: copyEmail },
+      { id: 'act-code',   label: 'View Source Code',      icon: iconCode,                       action: () => openLink('https://github.com/RamekhCHHOENG/portfolio') },
     ],
   },
   {
@@ -169,13 +170,13 @@ const groups: Group[] = [
       { id: 'link-twitter',  label: 'Twitter',  icon: iconTwitter,  action: () => openLink('https://twitter.com/RamekhCHHOENG') },
     ],
   },
-]
+])
 
 // ─── Filtering ────────────────────────────────────────────────────────────────
 const filteredGroups = computed(() => {
   const q = query.value.trim().toLowerCase()
-  if (!q) return groups
-  return groups
+  if (!q) return groups.value
+  return groups.value
     .map(g => ({ ...g, items: g.items.filter(c => c.label.toLowerCase().includes(q)) }))
     .filter(g => g.items.length > 0)
 })

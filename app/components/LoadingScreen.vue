@@ -40,7 +40,7 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, #07001a 0%, #04081c 45%, #010f0a 100%);
+  background: linear-gradient(145deg, #0b0903 0%, #10130a 45%, #020f0b 100%);
   transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
@@ -86,9 +86,9 @@ onMounted(() => {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(139, 92, 246, 0.7),
+    rgba(245, 196, 81, 0.72),
     rgba(255, 255, 255, 0.95),
-    rgba(59, 130, 246, 0.7),
+    rgba(20, 184, 166, 0.58),
     transparent
   );
   border-radius: inherit;

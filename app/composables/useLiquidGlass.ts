@@ -11,7 +11,7 @@ void main() {
 }`
 
 // ─── Pass 1: Background ───────────────────────────────────────────────────────
-// Matches app.vue: gradient(145deg, #07001a → #04081c → #010f0a) + 4 orbs
+// Matches app.vue: gradient(145deg, #0b0903 → #10130a → #020f0b) + 4 orbs
 const BG_FRAG = /* glsl */`#version 300 es
 precision highp float;
 in vec2 v_uv;
@@ -27,20 +27,20 @@ void main() {
   vec2 uv = v_uv; // 0..1, Y=0 bottom
 
   // Match app.vue gradient: 145deg ≈ angle in standard coords
-  // gradient goes from top-left(ish) #07001a → mid #04081c → bottom-right #010f0a
+  // gradient goes from top-left(ish) #0b0903 → mid #10130a → bottom-right #020f0b
   float gr = uv.x * 0.4 + (1.0 - uv.y) * 0.6; // 0=top-left, 1=bottom-right
   vec3 col;
   if (gr < 0.45) {
-    col = mix(vec3(0.0275, 0.0, 0.102), vec3(0.0157, 0.0314, 0.110), gr / 0.45);
+    col = mix(vec3(0.043, 0.035, 0.012), vec3(0.063, 0.075, 0.039), gr / 0.45);
   } else {
-    col = mix(vec3(0.0157, 0.0314, 0.110), vec3(0.004, 0.059, 0.039), (gr - 0.45) / 0.55);
+    col = mix(vec3(0.063, 0.075, 0.039), vec3(0.008, 0.059, 0.043), (gr - 0.45) / 0.55);
   }
 
   float t = u_time * 0.5;
 
-  // Violet orb — upper-left (matches app.vue orb 1)
+  // Gold orb — upper-left (matches app.vue orb 1)
   vec2 o1c = vec2(0.08 + sin(t * 0.31) * 0.04, 0.82 + cos(t * 0.26) * 0.04);
-  col += vec3(0.427, 0.157, 0.851) * gauss2(uv, o1c, 0.44) * 0.32;
+  col += vec3(0.961, 0.769, 0.318) * gauss2(uv, o1c, 0.44) * 0.24;
 
   // Blue orb — right center (matches app.vue orb 2)
   vec2 o2c = vec2(0.90 + sin(t * 0.20 + 2.0) * 0.04, 0.50 + cos(t * 0.16 + 1.0) * 0.04);
@@ -50,9 +50,9 @@ void main() {
   vec2 o3c = vec2(0.20 + sin(t * 0.15 + 4.0) * 0.03, 0.14 + cos(t * 0.12 + 3.0) * 0.04);
   col += vec3(0.020, 0.588, 0.412) * gauss2(uv, o3c, 0.34) * 0.16;
 
-  // Rose orb — lower-right (matches app.vue orb 4)
+  // Warm amber orb — lower-right (matches app.vue orb 4)
   vec2 o4c = vec2(0.78 + sin(t * 0.18 + 5.0) * 0.03, 0.18 + cos(t * 0.14 + 2.0) * 0.03);
-  col += vec3(0.745, 0.094, 0.365) * gauss2(uv, o4c, 0.26) * 0.12;
+  col += vec3(0.851, 0.467, 0.024) * gauss2(uv, o4c, 0.26) * 0.12;
 
   fragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
 }`
@@ -191,8 +191,8 @@ void main() {
   // Subtle brightening to enhance the glass feel
   glassCol = clamp(glassCol * 1.16 + 0.02, 0.0, 1.0);
 
-  // Subtle violet tint toward interior
-  glassCol = mix(glassCol, vec3(0.26, 0.14, 0.48), blurMix * 0.09);
+  // Subtle gold tint toward interior
+  glassCol = mix(glassCol, vec3(0.82, 0.58, 0.18), blurMix * 0.07);
 
   // ── Fresnel rim glow ──────────────────────────────────────────────────────
   float rim = pow(clamp(1.0 - insideDist / u_rimBand, 0.0, 1.0), u_rimPow);

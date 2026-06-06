@@ -2,7 +2,7 @@
   <section id="testimonials" class="py-32 px-6 glass-divider">
     <div class="max-w-6xl mx-auto">
       <div class="mb-16 fade-up">
-        <p class="text-xs text-violet-400 uppercase tracking-widest font-medium mb-3">Recommendations</p>
+        <p class="text-xs text-amber-400 uppercase tracking-widest font-medium mb-3">Recommendations</p>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
           What people say.
         </h2>
@@ -42,7 +42,9 @@
               <div>
                 <h4 class="text-white/90 text-sm font-semibold">{{ testimonial.name }}</h4>
                 <p class="text-white/40 text-xs mt-0.5">{{ testimonial.role }}</p>
-                <p class="text-white/30 text-[10px] mt-0.5">{{ testimonial.company }}</p>
+                <p class="text-cyan-300/60 text-[10px] mt-0.5">
+                  <span class="inline-block blur-[3px] select-none">{{ testimonial.company }}</span>
+                </p>
               </div>
             </div>
           </div>
@@ -57,13 +59,13 @@ const testimonials = [
   {
     name: 'Sophea Sok',
     role: 'Senior Frontend Developer',
-    company: 'Soramitsu Khmer Co., Ltd',
+    company: 'Company name',
     text: 'Ramekh is an exceptional developer who consistently delivers high-quality Vue.js components and solutions. His ability to tackle complex architectural bugs and collaborate across teams makes him an invaluable asset to any enterprise project.',
   },
   {
     name: 'Project Manager',
     role: 'Product Management',
-    company: 'IDEALINK CONSULTING LTD',
+    company: 'Company name',
     text: 'Working with Ramekh has been fantastic. He established our core project infrastructure from scratch and led the frontend development with great expertise. He is a fast learner, communicates well, and handles pressure excellently.',
   }
 ]

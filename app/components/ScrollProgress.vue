@@ -1,7 +1,7 @@
 <template>
   <div class="fixed top-0 left-0 w-full h-1 z-[100] no-print">
     <div
-      class="h-full bg-gradient-to-r from-violet-500 via-emerald-400 to-blue-500 transition-all duration-150 ease-out origin-left"
+      class="h-full bg-gradient-to-r from-amber-400 via-emerald-400 to-blue-500 transition-all duration-150 ease-out origin-left"
       :style="{ transform: `scaleX(${progress})` }"
     />
   </div>

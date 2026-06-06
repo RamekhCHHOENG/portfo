@@ -2,7 +2,7 @@
   <section id="projects" class="py-32 px-6 glass-divider">
     <div class="max-w-6xl mx-auto">
       <div class="mb-10 fade-up">
-        <p class="text-xs text-violet-400 uppercase tracking-widest font-medium mb-3">Work</p>
+        <p class="text-xs text-amber-400 uppercase tracking-widest font-medium mb-3">Work</p>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-4">
           Things I've built.
         </h2>
@@ -44,7 +44,7 @@
               {{ project.initials }}
             </div>
             <div class="absolute top-3 left-3 z-10">
-              <span class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-violet-600/90 text-white rounded-full">Featured</span>
+              <span class="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-amber-500/90 text-white rounded-full">Featured</span>
             </div>
           </div>
           <div class="p-6 flex flex-col flex-1">
@@ -92,7 +92,7 @@
               {{ project.initials }}
             </div>
             <div v-if="project.featured" class="absolute top-3 left-3 z-10">
-              <span class="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-indigo-600/90 text-white rounded-full">Featured</span>
+              <span class="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-amber-500/90 text-white rounded-full">Featured</span>
             </div>
           </div>
 
@@ -205,7 +205,7 @@ const projects = [
     title: 'Enterprise Management System',
     initials: 'EM',
     desc: 'Led the development of a complex management platform using Vue.js and Vuetify. Featured advanced data visualization, professional training modules, and business technology integration.',
-    gradient: 'linear-gradient(135deg, #2e1a47 0%, #431d6e 50%, #5b21b6 100%)',
+    gradient: 'linear-gradient(135deg, #2f2611 0%, #7a5b13 50%, #d6a72d 100%)',
     github: null,
     demo: null,
     release: '2023',
@@ -238,7 +238,7 @@ const projects = [
     title: 'AGI Assistant Monorepo',
     initials: 'AI',
     desc: 'A 25+ project monorepo spanning web, mobile, microservices, AI agents, and self-hosted infra. Deployed on Coolify with shared Docker services.',
-    gradient: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)',
+    gradient: 'linear-gradient(135deg, #172033 0%, #5f4b16 50%, #d6a72d 100%)',
     github: null,
     demo: null,
     release: '2025',
@@ -248,7 +248,7 @@ const projects = [
   {
     title: 'Portfolio 2026',
     initials: 'RC',
-    desc: 'A premium developer portfolio built with Nuxt 4, TailwindCSS, and high-end animations. Optimized for performance and PDF resume generation.',
+    desc: 'A premium developer portfolio built with Nuxt 4, TailwindCSS, and high-end animations. Optimized for performance, PWA delivery, and a reliable resume flow.',
     gradient: 'linear-gradient(135deg, #09090b 0%, #18181b 50%, #27272a 100%)',
     github: 'https://github.com/RamekhCHHOENG/portfolio',
     demo: 'https://ramekhchhoeng.github.io',

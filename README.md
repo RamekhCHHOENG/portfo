@@ -1,9 +1,9 @@
 # Ramekhchhoeng – Personal Portfolio
 
-**Live URL:** `https://ramekhchhoeng.github.io/portfo/`  
+**Live URL:** `https://ramekhchhoeng.com`  
 **Repository:** `https://github.com/RamekhCHHOENG/portfo`
 
-A personal portfolio built with **Nuxt 4** + **NuxtUI 4** (Tailwind CSS v4), deployed as a static PWA on GitHub Pages.
+A personal portfolio built with **Nuxt 4** + **NuxtUI 4** (Tailwind CSS v4), deployed as a static PWA.
 
 ---
 
@@ -14,8 +14,8 @@ A personal portfolio built with **Nuxt 4** + **NuxtUI 4** (Tailwind CSS v4), dep
 | **Hero / About** | Name, title, bio, avatar, about cards |
 | **Skills** | 4 skill groups with color-coded badges |
 | **Projects** | 6 featured projects with tech stack tags |
-| **Contact** | Email, GitHub, LinkedIn, Download PDF |
-| **PDF Export** | Client-side PDF via `html2pdf.js` → `Ramekhchhoeng_Final.pdf` |
+| **Contact** | Email, GitHub, LinkedIn, Download Resume |
+| **Resume** | Static PDF served from `public/resume.pdf`; source lives in `material/resume.html` |
 | **Responsive** | Mobile / tablet / desktop layouts |
 | **PWA** | Service worker, offline mode, installable on mobile |
 
@@ -40,7 +40,7 @@ To verify PWA compliance, run Lighthouse on the deployed URL — target score �
 - **Framework:** Nuxt 4.4.2
 - **UI:** NuxtUI 4.7.0 (Tailwind CSS v4)
 - **PWA:** @vite-pwa/nuxt 1.1.1 (Workbox)
-- **PDF:** html2pdf.js 0.14.0
+- **Resume:** Static PDF asset generated from `material/resume.html`
 - **Deployment:** GitHub Pages via GitHub Actions
 
 ---
@@ -60,7 +60,7 @@ npm run preview    # Preview the static output
 ## Deployment
 
 The GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically:
-1. Runs `npm run generate` with `NUXT_APP_BASE_URL=/portfo/`
+1. Runs `npm run generate` for the custom domain root path
 2. Deploys `.output/public/` to GitHub Pages via the Actions Pages API on every push to `main`
 
 Enable GitHub Pages in **Settings → Pages → Source: GitHub Actions**.
@@ -72,7 +72,7 @@ Enable GitHub Pages in **Settings → Pages → Source: GitHub Actions**.
 - [x] Live URL accessible
 - [x] Repository public
 - [x] All 4 portfolio sections (Hero/About, Skills, Projects, Contact)
-- [x] PDF download button works (`Ramekhchhoeng_Final.pdf`)
+- [x] PDF download button works (`Ramekh_Chhoeng_Resume.pdf`)
 - [x] Responsive on mobile, tablet, desktop
 - [x] PWA: manifest, service worker, offline mode
 - [x] GitHub Actions CI configured

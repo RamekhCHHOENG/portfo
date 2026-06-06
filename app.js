@@ -69,6 +69,37 @@ const fadeObserver = new IntersectionObserver(
 );
 document.querySelectorAll('.fade-in').forEach((el) => fadeObserver.observe(el));
 
+/* -------- Tab Switching (Experience & Education) -------- */
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+
+tabButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const targetTab = btn.dataset.tab;
+
+    // Update buttons
+    tabButtons.forEach((b) => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+
+    // Update panels
+    tabPanels.forEach((panel) => {
+      panel.classList.remove('active');
+    });
+    const activePanel = document.getElementById(`panel-${targetTab}`);
+    activePanel.classList.add('active');
+
+    // Re-trigger fade-in for newly visible timeline items
+    activePanel.querySelectorAll('.fade-in').forEach((el) => {
+      el.classList.remove('visible');
+      fadeObserver.observe(el);
+    });
+  });
+});
+
 /* -------- PDF Download -------- */
 function downloadPDF() {
   const btn = document.getElementById('download-pdf-nav');

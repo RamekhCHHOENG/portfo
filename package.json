@@ -12,7 +12,6 @@
   "dependencies": {
     "@nuxt/ui": "^4.7.0",
     "@vite-pwa/nuxt": "^1.1.1",
-    "html2pdf.js": "^0.14.0",
     "nuxt": "^4.4.2"
   },
   "devDependencies": {

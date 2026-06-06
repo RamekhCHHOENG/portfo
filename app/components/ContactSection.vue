@@ -3,7 +3,7 @@
     <!-- Decorative ambient orb -->
     <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
       <div class="absolute w-[600px] h-[600px] rounded-full opacity-[0.07] blur-[120px]"
-           style="background: #7c3aed; right: -15%; top: 50%; transform: translateY(-50%);" />
+           style="background: #d6a72d; right: -15%; top: 50%; transform: translateY(-50%);" />
     </div>
     <div class="max-w-6xl mx-auto">
 
@@ -11,7 +11,7 @@
 
         <!-- Left: header + social links -->
         <div class="fade-up">
-          <p class="text-xs text-violet-400 uppercase tracking-widest font-medium mb-3">Contact</p>
+          <p class="text-xs text-amber-400 uppercase tracking-widest font-medium mb-3">Contact</p>
           <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-5">
             Let's work together.
           </h2>
@@ -105,7 +105,7 @@
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
               </svg>
-              {{ isGenerating ? 'Generating…' : 'Download Resume' }}
+              {{ isGenerating ? 'Generating…' : resumeActionLabel }}
             </button>
           </div>
         </div>
@@ -212,7 +212,7 @@
 </template>
 
 <script setup lang="ts">
-const { downloadPDF, isGenerating } = usePdfDownload()
+const { downloadPDF, isGenerating, resumeActionLabel } = usePdfDownload()
 
 const form = reactive({ name: '', email: '', subject: '', message: '' })
 const errors = reactive({ name: '', email: '', subject: '', message: '' })
