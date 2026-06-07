@@ -3,40 +3,17 @@ export default defineNuxtPlugin(() => {
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  const tiltDone = new WeakSet<Element>()
+  const spotlightDone = new WeakSet<Element>()
   const magDone = new WeakSet<Element>()
 
   // ─── Card cursor spotlight ────────────────────────────────────────────────
   function attachSpotlight(el: HTMLElement) {
-    if (tiltDone.has(el)) return   // reuse tiltDone guard (spotlight runs with tilt)
+    if (spotlightDone.has(el)) return
+    spotlightDone.add(el)
     el.addEventListener('mousemove', (e: MouseEvent) => {
       const r = el.getBoundingClientRect()
       el.style.setProperty('--sx', `${((e.clientX - r.left) / r.width * 100).toFixed(1)}%`)
       el.style.setProperty('--sy', `${((e.clientY - r.top) / r.height * 100).toFixed(1)}%`)
-    })
-  }
-
-  // ─── 3-D card tilt ────────────────────────────────────────────────────────
-  function attachTilt(el: HTMLElement) {
-    if (tiltDone.has(el)) return
-    tiltDone.add(el)
-
-    el.style.willChange = 'transform'
-    el.style.transformStyle = 'preserve-3d'
-
-    el.addEventListener('mousemove', (e: MouseEvent) => {
-      const r = el.getBoundingClientRect()
-      const x = (e.clientX - r.left) / r.width   // 0 → 1
-      const y = (e.clientY - r.top) / r.height    // 0 → 1
-      const rx = (y - 0.5) * -14                  // -7 → 7 deg
-      const ry = (x - 0.5) * 14
-      el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.018,1.018,1.018)`
-      el.style.transition = 'transform 0.08s ease-out'
-    })
-
-    el.addEventListener('mouseleave', () => {
-      el.style.transform = ''
-      el.style.transition = 'transform 0.55s cubic-bezier(0.23,1,0.32,1)'
     })
   }
 
@@ -120,7 +97,6 @@ export default defineNuxtPlugin(() => {
     if (prefersReducedMotion) return
     document.querySelectorAll<HTMLElement>('.glass-card').forEach(el => {
       attachSpotlight(el)
-      attachTilt(el)
     })
     document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach(attachMagnetic)
   }

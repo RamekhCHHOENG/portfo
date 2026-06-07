@@ -17,7 +17,7 @@
           @click.stop
         >
           <!-- Search row -->
-          <div class="flex items-center gap-3 px-4 py-3.5 border-b border-white/10">
+          <div class="palette-search flex items-center gap-3 px-4 py-3.5 border-b border-white/10">
             <svg class="w-4 h-4 text-white/35 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -26,7 +26,7 @@
               v-model="query"
               type="text"
               placeholder="Type a command or search…"
-              class="flex-1 bg-transparent text-sm text-white placeholder-white/30 outline-none"
+              class="palette-input flex-1 bg-transparent text-sm text-white placeholder-white/30 outline-none"
               @keydown.down.prevent="moveDown"
               @keydown.up.prevent="moveUp"
               @keydown.enter.prevent="executeActive"
@@ -36,7 +36,7 @@
           </div>
 
           <!-- Results -->
-          <div class="max-h-[340px] overflow-y-auto py-2">
+          <div class="palette-results max-h-[340px] overflow-y-auto py-2">
             <template v-if="flatItems.length > 0">
               <template v-for="group in filteredGroups" :key="group.label">
                 <p class="px-4 pt-3 pb-1 text-[10px] uppercase tracking-[0.12em] text-white/25 font-semibold select-none">
@@ -56,7 +56,7 @@
                 >
                   <!-- Icon -->
                   <span
-                    class="w-7 h-7 flex items-center justify-center rounded-lg border border-white/10 bg-white/5 flex-shrink-0 text-white/50"
+                    class="glass-sm w-7 h-7 flex items-center justify-center rounded-lg flex-shrink-0 text-white/50"
                     v-html="cmd.icon"
                   />
                   <span class="flex-1 text-sm">{{ cmd.label }}</span>
@@ -226,5 +226,34 @@ watch(isOpen, (v) => {
 .palette-leave-to {
   opacity: 0;
   transform: scale(0.96) translateY(-6px);
+}
+
+.palette-search {
+  background: rgba(255, 255, 255, 0);
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.palette-search:focus-within {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.palette-input:focus,
+.palette-input:focus-visible {
+  outline: none;
+}
+
+.palette-results {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.16) transparent;
+}
+
+.palette-results::-webkit-scrollbar {
+  width: 4px;
+}
+
+.palette-results::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
 }
 </style>

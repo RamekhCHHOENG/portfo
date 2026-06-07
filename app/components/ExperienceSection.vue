@@ -90,28 +90,71 @@
         </div>
 
         <!-- AI Toolkit Card -->
-        <div class="glass-card rounded-2xl p-6">
-          <div class="flex items-center gap-2.5 mb-5">
-            <span class="text-lg">&#x1F916;</span>
-            <h3 class="text-sm font-semibold text-white/90">AI-Assisted Development</h3>
-            <span class="px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-full bg-violet-500/15 text-violet-400 border border-violet-500/25">Daily workflow</span>
+        <div class="glass-card rounded-2xl p-6 sm:p-7">
+          <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <div class="mb-3 flex items-center gap-2.5">
+                <span class="text-lg">&#x1F916;</span>
+                <h3 class="text-sm font-semibold text-white/90">AI-Assisted Engineering Workflow</h3>
+                <span class="rounded-full border border-amber-400/25 bg-amber-400/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-300">Daily workflow</span>
+              </div>
+              <p class="max-w-3xl text-sm leading-relaxed text-white/56">
+                I use AI as a practical engineering partner: clarify unclear requirements, speed up repetitive implementation,
+                review risky changes, and turn decisions into maintainable documentation. The code still goes through human review,
+                local testing, and project conventions before shipping.
+              </p>
+            </div>
           </div>
-          <p class="text-sm text-white/50 leading-relaxed mb-5">
-            Integrate AI coding tools into daily development workflow to accelerate delivery, improve code quality, and streamline architecture decisions.
-          </p>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+          <div class="grid grid-cols-1 gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+            <div class="glass-sm rounded-xl p-5">
+              <p class="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/38">How I apply it</p>
+              <div class="grid gap-3">
+                <div
+                  v-for="item in aiWorkflow"
+                  :key="item.step"
+                  class="glass-sm grid grid-cols-[38px_1fr] gap-3 rounded-lg p-3"
+                >
+                  <span class="text-xs font-bold text-amber-300">{{ item.step }}</span>
+                  <div>
+                    <p class="text-sm font-semibold text-white/86">{{ item.title }}</p>
+                    <p class="mt-1 text-xs leading-relaxed text-white/48">{{ item.desc }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-sm rounded-xl p-5">
+              <p class="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-white/38">Quality guardrails</p>
+              <ul class="space-y-3">
+                <li
+                  v-for="guardrail in aiGuardrails"
+                  :key="guardrail"
+                  class="flex items-start gap-2 text-sm leading-relaxed text-white/58"
+                >
+                  <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                  {{ guardrail }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
             <div v-for="tool in aiTools" :key="tool.name" class="glass-sm rounded-xl p-4">
-              <div class="flex items-center gap-2 mb-3">
+              <div class="mb-3 flex items-start gap-3">
                 <span class="text-base">{{ tool.icon }}</span>
-                <p class="text-sm font-semibold text-white/85">{{ tool.name }}</p>
+                <div>
+                  <p class="text-sm font-semibold text-white/86">{{ tool.name }}</p>
+                  <p class="mt-0.5 text-[11px] uppercase tracking-[0.12em] text-white/32">{{ tool.focus }}</p>
+                </div>
               </div>
               <ul class="space-y-1.5">
                 <li
                   v-for="use in tool.uses"
                   :key="use"
-                  class="flex items-start gap-2 text-[13px] text-white/55 leading-relaxed"
+                  class="flex items-start gap-2 text-[13px] leading-relaxed text-white/52"
                 >
-                  <span class="text-amber-400 text-[10px] mt-1 flex-shrink-0">&#x25B8;</span>
+                  <span class="mt-1 text-[10px] text-amber-300">&#x25B8;</span>
                   {{ use }}
                 </li>
               </ul>
@@ -293,32 +336,62 @@ const skillGroups = [
   },
 ]
 
+const aiWorkflow = [
+  {
+    step: '01',
+    title: 'Clarify requirements before coding',
+    desc: 'Break vague tasks into user states, API needs, edge cases, and implementation checkpoints before opening the editor.',
+  },
+  {
+    step: '02',
+    title: 'Prototype repetitive work faster',
+    desc: 'Draft components, composables, validation rules, API clients, and test scaffolds, then adapt them to the project patterns.',
+  },
+  {
+    step: '03',
+    title: 'Review risky changes',
+    desc: 'Use AI to pressure-test logic, accessibility, security assumptions, loading states, and missing test coverage.',
+  },
+  {
+    step: '04',
+    title: 'Document and hand off clearly',
+    desc: 'Turn technical decisions into PR summaries, implementation notes, and useful comments for future maintainers.',
+  },
+]
+
+const aiGuardrails = [
+  'No blind merges: every suggestion is reviewed, edited, and tested before shipping.',
+  'Private client data, credentials, and production secrets stay out of prompts.',
+  'Project conventions come first; generated abstractions must fit the existing codebase.',
+  'AI output is treated as a draft, not a source of truth for architecture or security.',
+]
+
 const aiTools = [
   {
     name: 'GitHub Copilot / Codex',
     icon: '\u26A1',
+    focus: 'Implementation speed',
     uses: [
-      'Code autocompletion and boilerplate generation',
-      'Accelerating repetitive patterns and test writing',
-      'Inline suggestions for faster feature development',
+      'Draft component structure, composables, and repetitive UI states',
+      'Speed up tests, refactors, and framework-specific boilerplate',
     ],
   },
   {
     name: 'Claude',
     icon: '\u{1F9E0}',
+    focus: 'Review and reasoning',
     uses: [
-      'Code review, refactoring, and architecture planning',
-      'Debugging complex logic and edge cases',
-      'Technical documentation and code explanation',
+      'Review architecture tradeoffs, edge cases, and refactor plans',
+      'Debug complex flows and turn decisions into clear documentation',
     ],
   },
   {
     name: 'Gemini',
     icon: '\u2726',
+    focus: 'Codebase analysis',
     uses: [
-      'Codebase-aware multi-file refactoring',
-      'Rapid prototyping and pair programming',
-      'System design and component architecture',
+      'Explore larger codebases and compare implementation paths',
+      'Prototype product flows, integration plans, and system diagrams',
     ],
   },
 ]

@@ -30,11 +30,11 @@
         <div class="glass-card rounded-2xl overflow-hidden bento-photo relative min-h-[260px] sm:col-span-1">
           <img
             src="/ramekhchhoeng.jpg"
-            alt="Ramekh Chhoeng"
+            alt="Ramekh CHHOENG"
             class="absolute inset-0 w-full h-full object-cover object-top"
           />
           <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent p-5">
-            <p class="text-sm font-bold text-white leading-tight">Ramekh Chhoeng</p>
+            <p class="text-sm font-bold text-white leading-tight">Ramekh CHHOENG</p>
             <p class="text-xs text-white/55">Frontend Engineer</p>
           </div>
         </div>

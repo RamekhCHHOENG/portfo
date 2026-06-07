@@ -1,4 +1,4 @@
-# Ramekhchhoeng – Personal Portfolio
+# Ramekh CHHOENG – Personal Portfolio
 
 **Live URL:** `https://ramekhchhoeng.com`  
 **Repository:** `https://github.com/RamekhCHHOENG/portfo`

@@ -22,9 +22,9 @@ export default defineNuxtConfig({
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
-      name: 'Ramekhchhoeng – Portfolio',
+      name: 'Ramekh CHHOENG – Portfolio',
       short_name: 'RC Portfolio',
-      description: 'Personal portfolio of Ramekhchhoeng, a Full-Stack Developer.',
+      description: 'Personal portfolio of Ramekh CHHOENG, a Frontend Engineer.',
       theme_color: '#d6a72d',
       background_color: '#09090b',
       display: 'standalone',
@@ -72,12 +72,12 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      title: 'Ramekh Chhoeng – Frontend Engineer',
+      title: 'Ramekh CHHOENG – Frontend Engineer',
       meta: [
-        { name: 'description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
+        { name: 'description', content: 'Professional portfolio of Ramekh CHHOENG, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
         { name: 'theme-color', content: '#d6a72d' },
-        { property: 'og:title',       content: 'Ramekh Chhoeng – Frontend Engineer' },
-        { property: 'og:description',  content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
+        { property: 'og:title',       content: 'Ramekh CHHOENG – Frontend Engineer' },
+        { property: 'og:description',  content: 'Professional portfolio of Ramekh CHHOENG, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
         { property: 'og:type',         content: 'website' },
         { property: 'og:url',          content: 'https://ramekhchhoeng.com' },
         { property: 'og:image',        content: 'https://ramekhchhoeng.com/ramekhchhoeng.jpg' },
@@ -85,8 +85,8 @@ export default defineNuxtConfig({
         { property: 'og:image:height', content: '800' },
         { name: 'twitter:card',        content: 'summary_large_image' },
         { name: 'twitter:creator',     content: '@RamekhCHHOENG' },
-        { name: 'twitter:title',       content: 'Ramekh Chhoeng – Frontend Engineer' },
-        { name: 'twitter:description', content: 'Professional portfolio of Ramekh Chhoeng, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
+        { name: 'twitter:title',       content: 'Ramekh CHHOENG – Frontend Engineer' },
+        { name: 'twitter:description', content: 'Professional portfolio of Ramekh CHHOENG, a Frontend Engineer specializing in Vue.js, TypeScript, and Mobile Development.' },
         { name: 'twitter:image',       content: 'https://ramekhchhoeng.com/ramekhchhoeng.jpg' },
       ],
       link: [

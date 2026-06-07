@@ -1,6 +1,7 @@
 <template>
   <nav
     class="no-print fixed top-0 inset-x-0 z-50 h-14 glass-nav"
+    @keydown.esc.window="menuOpen = false"
   >
     <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-full">
       <!-- Logo -->
@@ -52,6 +53,7 @@
         <button
           class="md:hidden no-print p-1.5 text-zinc-400 hover:text-zinc-50 transition-colors"
           :aria-expanded="menuOpen"
+          aria-controls="mobile-menu"
           aria-label="Toggle menu"
           @click="menuOpen = !menuOpen"
         >
@@ -76,28 +78,37 @@
     >
       <div
         v-if="menuOpen"
-        class="no-print md:hidden absolute inset-x-0 top-full glass-nav px-6 pb-6"
+        id="mobile-menu"
+        class="no-print md:hidden fixed inset-x-0 top-14 bottom-0"
       >
-        <ul class="flex flex-col gap-1 pt-4">
-          <li v-for="link in navLinks" :key="link.href">
-            <a
-              :href="link.href"
-              class="block py-2.5 text-sm text-zinc-400 hover:text-zinc-50 transition-colors"
-              @click="menuOpen = false"
-            >
-              {{ link.label }}
-            </a>
-          </li>
-          <li class="pt-3">
-            <button
-              class="no-print w-full inline-flex items-center justify-center gap-1.5 text-sm px-4 py-2 bg-white text-black rounded-full font-semibold hover:bg-white/90 disabled:opacity-50 transition-colors"
-              :disabled="isGenerating"
-              @click="downloadPDF(); menuOpen = false"
-            >
-              {{ isGenerating ? 'Generating…' : resumeActionLabel }}
-            </button>
-          </li>
-        </ul>
+        <button
+          type="button"
+          class="absolute inset-0 bg-black/35"
+          aria-label="Close menu"
+          @click="menuOpen = false"
+        />
+        <div class="absolute inset-x-0 top-0 glass-nav px-6 pb-6">
+          <ul class="flex flex-col gap-1 pt-4">
+            <li v-for="link in navLinks" :key="link.href">
+              <a
+                :href="link.href"
+                class="block py-2.5 text-sm text-zinc-300 hover:text-zinc-50 transition-colors"
+                @click="menuOpen = false"
+              >
+                {{ link.label }}
+              </a>
+            </li>
+            <li class="pt-3">
+              <button
+                class="no-print w-full inline-flex items-center justify-center gap-1.5 text-sm px-4 py-2 bg-white text-black rounded-full font-semibold hover:bg-white/90 disabled:opacity-50 transition-colors"
+                :disabled="isGenerating"
+                @click="downloadPDF(); menuOpen = false"
+              >
+                {{ isGenerating ? 'Generating...' : resumeActionLabel }}
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </Transition>
   </nav>

@@ -34,7 +34,7 @@ export function usePdfDownload() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ramekh Chhoeng - Resume</title>
+  <title>Ramekh CHHOENG - Resume</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -283,9 +283,9 @@ export function usePdfDownload() {
     <aside>
       <div class="profile-container">
         <div class="profile-frame">
-          <img src="${profileSrc || 'https://ramekhchhoeng.com/ramekhchhoeng.jpg'}" alt="Ramekh Chhoeng" class="profile-img" onerror="this.style.display='none'">
+          <img src="${profileSrc || 'https://ramekhchhoeng.com/ramekhchhoeng.jpg'}" alt="Ramekh CHHOENG" class="profile-img" onerror="this.style.display='none'">
         </div>
-        <h1>Ramekh Chhoeng</h1>
+        <h1>Ramekh CHHOENG</h1>
         <div class="title">Frontend Engineer</div>
       </div>
 

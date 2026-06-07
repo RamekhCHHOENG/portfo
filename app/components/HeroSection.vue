@@ -1,114 +1,91 @@
 <template>
   <section
     id="hero"
-    class="relative min-h-screen flex flex-col items-center justify-center text-white pt-20 pb-20 px-5 sm:px-6 text-center overflow-hidden"
+    class="relative min-h-screen overflow-hidden px-5 pt-28 pb-20 text-white sm:px-6 lg:flex lg:items-center"
   >
+    <div class="absolute inset-0" aria-hidden="true">
+      <img
+        src="/ramekhchhoeng.jpg"
+        alt=""
+        class="absolute inset-y-0 right-0 h-full w-full object-cover object-top opacity-[0.14] sm:opacity-[0.18] lg:w-[58%] lg:opacity-[0.28]"
+      />
+      <div class="absolute inset-0 bg-[linear-gradient(90deg,#070806_0%,rgba(7,8,6,0.94)_34%,rgba(7,8,6,0.66)_70%,#070806_100%)]" />
+      <div class="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#070806] to-transparent" />
+    </div>
 
-    <!-- Page content (above the canvas) -->
-    <div class="relative z-10 w-full max-w-4xl mx-auto">
-      <!-- Profile + badge row -->
-      <div class="flex flex-col items-center gap-4 mb-10 fade-up">
-        <div class="relative">
-          <div class="absolute inset-0 rounded-full scale-150 blur-2xl opacity-50"
-               style="background: radial-gradient(circle, rgba(245,196,81,0.65) 0%, transparent 70%);" />
-          <img
-            src="/ramekhchhoeng.jpg"
-            alt="Ramekhchhoeng"
-            class="relative w-16 h-16 rounded-full object-cover shadow-[0_0_0_2px_rgba(245,196,81,0.5),0_0_0_5px_rgba(245,196,81,0.12),0_8px_32px_rgba(0,0,0,0.6)]"
-          />
+    <div class="relative z-10 mx-auto grid w-full max-w-6xl gap-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-end">
+      <div class="max-w-4xl">
+        <div class="fade-up mb-8 glass-sm inline-flex items-center gap-3 rounded-full px-3 py-1.5 text-xs text-white/72">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+          Available for frontend, Nuxt, and product engineering roles
         </div>
-        <div class="glass-sm inline-flex max-w-full items-center gap-2 rounded-full px-3.5 py-1.5 text-xs text-white/70">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-          Available for new opportunities
+
+        <p class="fade-up fade-up-1 mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-amber-300">
+          Frontend Engineer
+        </p>
+        <h1 class="fade-up fade-up-1 max-w-5xl text-[44px] font-bold leading-[0.95] tracking-[-0.04em] text-white sm:text-[76px] lg:text-[104px]">
+          Ramekh CHHOENG
+        </h1>
+        <p class="fade-up fade-up-2 mt-7 max-w-2xl text-lg leading-8 text-white/78 sm:text-xl">
+          I build fast, reliable Vue and Nuxt products with clean component systems,
+          practical API integration, and the polish teams need before launch.
+        </p>
+
+        <div class="fade-up fade-up-3 mt-9 flex w-full max-w-sm flex-col gap-3 no-print sm:max-w-none sm:flex-row">
+          <a
+            href="#projects"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-[0_14px_40px_rgba(255,255,255,0.12)] transition-colors hover:bg-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070806]"
+          >
+            View projects
+            <svg class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+          <button
+            class="no-print glass-sm inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white/82 transition-colors hover:text-white disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070806]"
+            :disabled="isGenerating"
+            @click="downloadPDF"
+          >
+            <svg v-if="!isGenerating" class="h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <svg v-else class="h-3.5 w-3.5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+            {{ isGenerating ? 'Preparing...' : resumeActionLabel }}
+          </button>
+          <button
+            class="no-print inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-medium text-white/62 transition-colors hover:text-white sm:px-2"
+            @click="scrollToContact"
+          >
+            Contact
+          </button>
         </div>
       </div>
 
-      <!-- Main headline -->
-      <h1 class="max-w-full mx-auto text-[34px] sm:text-[64px] lg:text-[82px] font-bold tracking-[-0.025em] sm:tracking-[-0.035em] leading-[1.05] mb-6 fade-up fade-up-1 break-words">
-        Ramekh Chhoeng
-      </h1>
-
-      <!-- Subtitle -->
-      <p
-        class="text-lg sm:text-2xl text-white/90 max-w-3xl mx-auto leading-snug mb-4 fade-up fade-up-2"
-      >
-        Frontend Engineer building production Vue, Nuxt, and full-stack products.
-      </p>
-      <p class="text-sm sm:text-base text-white/68 max-w-2xl mx-auto leading-relaxed mb-10 fade-up fade-up-2">
-        4.5+ years shipping enterprise interfaces, mobile companion apps, and reliable internal tools across Southeast Asia and remote teams.
-      </p>
-
-      <!-- CTAs -->
-      <div class="flex w-full max-w-xs flex-col items-stretch justify-center gap-3 mx-auto no-print fade-up fade-up-3 sm:max-w-none sm:flex-row sm:items-center">
-        <a
-          href="#projects"
-          class="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-white text-black text-sm font-semibold rounded-full hover:bg-white/90 transition-colors shadow-[0_2px_20px_rgba(255,255,255,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0903]"
-        >
-          View Work
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </a>
-        <button
-          class="no-print glass-sm inline-flex items-center justify-center gap-2 px-6 py-2.5 text-white/85 text-sm font-medium rounded-full hover:text-white disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0903]"
-          :disabled="isGenerating"
-          @click="downloadPDF"
-        >
-          <svg v-if="!isGenerating" class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-          </svg>
-          <svg v-else class="w-3.5 h-3.5 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" />
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-          {{ isGenerating ? 'Generating…' : resumeActionLabel }}
-        </button>
-        <button
-          class="no-print glass-sm inline-flex items-center justify-center gap-2 px-6 py-2.5 text-white/85 text-sm font-medium rounded-full hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b0903]"
-          @click="scrollToContact"
-        >
-          <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0l-9.75 6-9.75-6" />
-          </svg>
-          Contact
-        </button>
-      </div>
-
-      <!-- Stats row with count-up animation -->
-      <div ref="statsRef" class="mt-14 fade-up fade-up-3">
-        <div class="glass-sm grid w-full max-w-xl mx-auto grid-cols-2 sm:grid-cols-4 rounded-2xl overflow-hidden divide-x divide-y sm:divide-y-0 divide-white/10">
-          <div v-for="(stat, i) in stats" :key="stat.label" class="px-4 py-4 text-center">
-            <p class="text-xl font-bold text-white tracking-tight">{{ stat.display ?? (counts[i] + stat.suffix) }}</p>
-            <p class="text-[11px] text-white/60 mt-0.5">{{ stat.label }}</p>
+      <aside class="fade-up fade-up-3 glass-card rounded-2xl p-5">
+        <p class="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-white/38">Proof points</p>
+        <div class="grid grid-cols-2 gap-3">
+          <div v-for="stat in stats" :key="stat.label" class="glass-sm rounded-xl p-4">
+            <p class="text-2xl font-bold tracking-tight text-white">{{ stat.value }}</p>
+            <p class="mt-1 text-[11px] leading-4 text-white/52">{{ stat.label }}</p>
           </div>
         </div>
-      </div>
-
-      <!-- Currently building -->
-      <div class="mt-8 fade-up fade-up-3">
-        <p class="text-xs text-white/55 max-w-2xl mx-auto leading-relaxed">
-          Currently building
-          <a href="https://github.com/RamekhCHHOENG" target="_blank" rel="noopener" class="text-white/75 hover:text-white transition-colors underline underline-offset-2">
-            new projects
-          </a>
-          · deepening expertise in microservices &amp; distributed systems.
+        <p class="mt-5 border-t border-white/8 pt-4 text-xs leading-5 text-white/52">
+          Based in Phnom Penh, working with teams across Southeast Asia and remote-first companies.
         </p>
-      </div>
+      </aside>
     </div>
 
-    <!-- Scroll cue -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 no-print">
-      <a
-        href="#about"
-        class="flex flex-col items-center gap-1.5 text-white/28 hover:text-white/55 transition-colors"
-        aria-label="Scroll to About"
-      >
-        <span class="text-[10px] uppercase tracking-widest">Scroll</span>
-        <svg class="w-4 h-4 animate-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </a>
-    </div>
+    <a
+      href="#projects"
+      class="no-print absolute bottom-7 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-white/34 transition-colors hover:text-white/62 sm:flex"
+      aria-label="Scroll to projects"
+    >
+      Projects
+      <span class="h-px w-10 bg-white/22" />
+    </a>
   </section>
 </template>
 
@@ -116,15 +93,11 @@
 const { downloadPDF, isGenerating, resumeActionLabel } = usePdfDownload()
 
 const stats = [
-  { num: 4, suffix: '+', label: 'Years of experience', display: '4.5+' },
-  { num: 25, suffix: '+', label: 'Projects delivered', display: '25+' },
-  { num: 15, suffix: '+', label: 'Technologies', display: '15+' },
-  { num: 2, suffix: '', label: 'Open source repos', display: '2' },
+  { value: '4.5+', label: 'Years shipping production UI' },
+  { value: '25+', label: 'Projects and internal tools' },
+  { value: '15+', label: 'Technologies used in delivery' },
+  { value: '2', label: 'Open source repositories' },
 ]
-
-const { counts, observe } = useCountUp(stats.map(s => s.num))
-const statsRef = ref<HTMLElement | null>(null)
-onMounted(() => { if (statsRef.value) observe(statsRef.value) })
 
 function scrollToContact() {
   document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })

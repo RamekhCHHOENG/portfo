@@ -120,12 +120,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold text-zinc-50 mb-2">Email draft opened.</h3>
-            <p class="text-sm text-zinc-400 mb-6">Review and send it from your email app. You can also email me directly at ramekhchhoeng@icloud.com.</p>
+            <h3 class="text-lg font-semibold text-zinc-50 mb-2">Email draft requested.</h3>
+            <p class="text-sm text-zinc-400 mb-6">If your email app opened, review and send it there. You can also email me directly at ramekhchhoeng@icloud.com.</p>
             <button
               class="text-xs text-zinc-500 hover:text-zinc-300 transition-colors"
               @click="resetForm"
-            >Open another draft</button>
+            >Edit and try again</button>
           </div>
 
           <!-- Form -->
